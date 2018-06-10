@@ -37,10 +37,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 if [[ -f /usr/share/zplug/init.zsh ]]; then
-    export ZPLUG_LOADFILE
-fi
-
-if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=/usr/share/zplug/init.zsh
     source /usr/share/zplug/init.zsh
 
