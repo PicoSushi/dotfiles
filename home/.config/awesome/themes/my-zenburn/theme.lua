@@ -12,7 +12,7 @@ local theme = {}
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Ricty 8"
+theme.font      = "Ricty Diminished 8"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"
