@@ -1,0 +1,47 @@
+[core]
+	editor = $EDITOR
+	excludesfile = ~/.gitignore
+
+[include]
+	path = ~/.gitconfig.local
+
+[color]
+	branch       = auto
+	decorate     = auto
+	diff         = auto
+	grep         = auto
+	interactive  = auto
+	# pager        = auto
+	showbranch   = auto
+	status       = auto
+	ui           = auto
+
+[push]
+	default = simple
+[pull]
+	ff = only
+[merge]
+	ff = false
+
+[ghq]
+	root = ~/src
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com
+
+[alias]
+	cm  = commit --verbose
+	cmm = commit --verbose --message
+
+	co  = checkout
+	com = checkout master
+
+	ba  = branch -a
+
+	fap = fetch --all --prune
+
+	s   = status --short
+	st  = status
+
+	sb  = show-branch
+	d   = diff
