@@ -1,0 +1,26 @@
+[global_config]
+  enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
+  title_transmit_bg_color = "#3f3f3f"
+  title_transmit_fg_color = "#8faf9f"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.8
+    background_type = transparent
+    cursor_color = "#ffffff"
+    font = Ricty Diminished 10
+    foreground_color = "#ffffff"
+    scrollback_infinite = True
+    scrollback_lines = 5000
+    use_system_font = False
+    visible_bell = True
