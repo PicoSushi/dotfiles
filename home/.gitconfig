@@ -27,7 +27,7 @@
 	root = ~/src
 
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com
+	insteadOf = https://github.com/
 
 [alias]
 	cm  = commit --verbose
