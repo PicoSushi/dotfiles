@@ -293,11 +293,11 @@ values."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 95
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-inactive-transparency 85
    ;; If non nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
    ;; If non nil show the color guide hint for transient state keys. (default t)
@@ -414,6 +414,7 @@ layers configuration. You are free to put any user code."
   (setq-default indicate-empty-lines t)   ; バッファの終端を表示
   (setq gc-cons-threshold 268435456)      ; no GC until 256 MiB
   (setq make-backup-files nil)
+  (spacemacs/toggle-transparency)
 
   ;;show [EOF] at EOF
   (defun set-buffer-end-mark()
