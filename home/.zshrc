@@ -1,17 +1,19 @@
+# -*- Mode: shell-script;coding:utf-8 -*- #
 # Set up the prompt
 
 autoload -Uz promptinit
 promptinit
-prompt adam1
+prompt fade
 
 setopt histignorealldups sharehistory
+setopt auto_cd
 
-# Use emacs keybindings even if our EDITOR is set to vi
+# Use emacs keybindings
 bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
@@ -37,7 +39,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 if [[ -f /usr/share/zplug/init.zsh ]]; then
-    export ZPLUG_LOADFILE=/usr/share/zplug/init.zsh
     source /usr/share/zplug/init.zsh
 
     if ! zplug check --verbose; then
@@ -47,9 +48,42 @@ if [[ -f /usr/share/zplug/init.zsh ]]; then
         fi
         echo
     fi
+
+    # Searching like fish
+    zplug "zsh-users/zsh-history-substring-search"
+    bindkey -M emacs '^P' history-substring-search-up
+    bindkey -M emacs '^N' history-substring-search-down
+
+    # Additional completion definitions for Zsh
+    zplug "zsh-users/zsh-completions", depth:1
+
+    # enhancd
+    zplug "b4b4r07/enhancd", use:init.sh
+    export ENHANCD_COMMAND="c"
+
+    zplug "mollifier/cd-gitroot"
+
+    zplug "rupa/z", use:z.sh
+
+    # Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
+    # excuting compinit command and sourcing other plugins.
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
     zplug load
+fi
+
+if [[ -f ~/.alias ]]; then
+    source ~/.alias
 fi
 
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ -d $HOME/.local/google-cloud-sdk ]]; then
+    # The next line updates PATH for the Google Cloud SDK.
+    source "$HOME/.local/google-cloud-sdk/path.zsh.inc"
+
+    # The next line enables shell command completion for gcloud.
+    source "$HOME/.local/google-cloud-sdk/completion.zsh.inc"
 fi
