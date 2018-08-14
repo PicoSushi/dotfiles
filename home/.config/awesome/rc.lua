@@ -54,7 +54,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/themes/my-zenburn/theme.lua")
+beautiful.init("~/.config/awesome/themes/neat-zenburn/theme.lua")
 
 -- set notification icon size to 100
 naughty.config.defaults['icon_size'] = 32
