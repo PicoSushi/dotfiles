@@ -56,6 +56,9 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/themes/my-zenburn/theme.lua")
 
+-- set notification icon size to 100
+naughty.config.defaults['icon_size'] = 32
+
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
