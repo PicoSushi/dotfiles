@@ -16,6 +16,9 @@ if [[ -x /usr/bin/terminator ]]; then terminator &
 elif [[ -x /usr/bin/urxvt ]]; then urxvt &
 fi
 
+# Run Enpass
+if [[ -x /opt/Enpass/bin/runenpass.sh]]; then /opt/Enpass/bin/runenpass.sh &; fi
+
 if [[ -x /usr/bin/vmware-user ]]; then
     /usr/bin/vmware-user
 elif [[ -x /usr/bin/VBoxClient ]]; then
