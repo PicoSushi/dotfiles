@@ -65,9 +65,9 @@ if [[ -f /usr/share/zplug/init.zsh ]]; then
 
     zplug "rupa/z", use:z.sh
 
-    # Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
-    # excuting compinit command and sourcing other plugins.
-    zplug "zsh-users/zsh-syntax-highlighting", defer:2
+    # better than zsh-users/zsh-syntax-highlighting
+    zplug "zdharma/fast-syntax-highlighting", defer:2
+
     zplug load
 fi
 
