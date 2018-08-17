@@ -38,6 +38,26 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+function powerline_precmd() {
+    PS1="$($GOPATH/src/github.com/$USER/powerline-go/powerline-go -error $? -shell zsh)"
+}
+
+# ================================================================
+# powerline-go
+# ================================================================
+function install_powerline_precmd() {
+    for s in "${precmd_functions[@]}"; do
+        if [ "$s" = "powerline_precmd" ]; then
+            return
+        fi
+    done
+    precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
+
 if [[ -f /usr/share/zplug/init.zsh ]]; then
     source /usr/share/zplug/init.zsh
 
