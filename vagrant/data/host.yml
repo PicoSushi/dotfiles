@@ -41,6 +41,7 @@
           - homesick
           - howm
           - htop
+          - jed
           - jq
           - linux-headers-amd64
           - nodejs
@@ -72,6 +73,7 @@
           - fonts-ricty-diminished
           - googler
           - lxde
+          - network-manager-gnome
           - oneko
           - pcmanfm
           - terminator
