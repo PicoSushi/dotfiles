@@ -1,0 +1,82 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Add user
+      user:
+        name: picosushi
+        password: "{{ password }}"
+        group: sudo
+        append: True
+
+      vars:
+        # Generate password with:
+        # `python3 -c 'import crypt, getpass; pw=getpass.getpass(); print(crypt.crypt(pw)) if pw==getpass.getpass("Enter Password again: ") else print("Passwords mismatched!")'`
+        password: ENTER_HASHED_PASSWORD_GENERATED_ABOVE
+
+    - name: Change runlevel
+      command: systemctl set-default graphical.target
+    - name: Change keyboard
+      command: sed -i 's/XKBVARIANT.*/XKBVARIANT="dvorak"/' /etc/default/keyboard
+
+    - name: Run the equivalent of "apt-get update" as a separate step
+      apt:
+        update_cache: yes
+
+    - name: Install a list of packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - build-essential
+          - byobu
+          - curl
+          - console-data
+          - ddskk
+          - figlet
+          - fortunes
+          - fortunes-debian-hints
+          - git
+          - golang
+          - homesick
+          - howm
+          - htop
+          - jq
+          - linux-headers-amd64
+          - nodejs
+          - nyancat
+          - python3
+          - python3-ipython
+          - python3-pip
+          - python3-setuptools
+          - ruby
+          - skkdic-extra
+          - sl
+          - sshfs
+          - tig
+          - tree
+          - tty-clock
+          - zplug
+          - zsh
+
+    - name: Install a list of packages with X
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - arandr
+          - awesome
+          - awesome-extra
+          - emacs25
+          - fonts-noto
+          - fonts-ricty-diminished
+          - googler
+          - lxde
+          - oneko
+          - pcmanfm
+          - terminator
+          - xcape
+          - xcompmgr
+          - xdg-user-dirs-gtk
+          - xinit
+          - xinput
