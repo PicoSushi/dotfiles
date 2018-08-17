@@ -10,4 +10,4 @@
   access_token = ""
   gist_id = ""
   public = false
-  auto_sync = false
+  auto_sync = true
