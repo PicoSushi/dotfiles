@@ -58,6 +58,21 @@ if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
 
+# ================================================================
+# pet
+# ================================================================
+function pet-select() {
+    BUFFER=$(pet search --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^s' pet-select
+
+# ================================================================
+# zplug
+# ================================================================
 if [[ -f /usr/share/zplug/init.zsh ]]; then
     source /usr/share/zplug/init.zsh
 
