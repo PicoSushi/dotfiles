@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # coding: utf-8
 # Basic commands
 alias ll='ls -ltr'
@@ -6,6 +7,7 @@ alias lla='ll -A'
 alias lli='ll -i'
 alias l.='ls -d .[a-zA-Z]*'
 alias ll.='l. -ltr'
+alias l='ll'
 alias ecn='emacsclient -n'
 alias strdate='date +%Y-%m-%d'
 alias strtime='date +%H-%M-%S'
@@ -51,8 +53,7 @@ if hash virtualenv 2>/dev/null; then alias mkvenv='mkdir venv && virtualenv venv
 
 # Fuzzy commands
 if hash ghq 2>/dev/null; then
-    alias gcd='cd $(ghq root)/$(ghq list | peco)'
-    # alias gcd='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+    alias gcd='cd $(ghq root)/$(ghq list | fzf)'
 fi
 
 case $(ps --no-headers -p $$) in
