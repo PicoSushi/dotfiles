@@ -30,7 +30,7 @@ alias mkgitignore='git status -s | grep -e "^\?\?" | cut -c 4- >> .gitignore'
 alias sl='sl -e'
 
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
-alias zf='z | cut -c 12- | fzf | cd'
+alias zf='cd "$(z | cut -c 12- | fzf)"'
 
 # docker
 alias docker-cremation="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
