@@ -113,6 +113,10 @@ if [[ -f ~/.alias ]]; then
     source ~/.alias
 fi
 
+if [[ -f ~/.local/bin/aws_zsh_completer.sh ]]; then
+    source ~/.local/bin/aws_zsh_completer.sh
+fi
+
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
