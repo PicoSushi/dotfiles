@@ -40,7 +40,7 @@
 
 	fap = fetch --all --prune
 
-	s   = status --short
+	s   = status --short --branch
 	st  = status
 
 	sb  = show-branch
