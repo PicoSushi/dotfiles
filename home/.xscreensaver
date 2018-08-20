@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.36 for kakakaya on Sat Jan 20 22:38:04 2018.
+# Written by xscreensaver-demo 5.36 for picosushi on Sat Aug 11 17:26:18 2018.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -47,10 +47,10 @@ programs:								      \
 				maze -root -generator 2 -pre-delay 0	    \n\
 - GL: 				superquadrics -root			    \n\
 -				attraction -root			    \n\
--				blitspin -root				    \n\
+				blitspin -root				    \n\
 -				greynetic -root				    \n\
--				helix -root				    \n\
--				hopalong -root				    \n\
+				helix -root -delay 2			    \n\
+-				hopalong -root -delay 3540 -count 4130	    \n\
 -				imsmap -root -mode s			    \n\
 -				noseguy -root				    \n\
 -				pyro -root				    \n\
@@ -60,8 +60,8 @@ programs:								      \
 				decayscreen -root			    \n\
 -				flame -root				    \n\
 -				halo -root				    \n\
-				slidescreen -root -delay2 318584	      \
-				  -grid-size 47				    \n\
+				slidescreen -root -delay2 200000	      \
+				  -grid-size 50				    \n\
 -				pedal -root				    \n\
 -				bouboule -root				    \n\
 -				braid -root				    \n\
@@ -73,12 +73,12 @@ programs:								      \
 -				goop -root				    \n\
 				grav -root -count 20 -no-trail		    \n\
 				ifs -root				    \n\
-				unicode -root				    \n\
+-				unicode -root				    \n\
 - GL: 				jigsaw -root				    \n\
 				julia -root				    \n\
--				kaleidescope -root			    \n\
+				kaleidescope -root			    \n\
 - GL: 				moebius -root				    \n\
--				moire -root				    \n\
+				moire -root -ncolors 255		    \n\
 - GL: 				morph3d -root				    \n\
 -				mountain -root				    \n\
 -				munch -root -clear 17			    \n\
@@ -92,7 +92,7 @@ programs:								      \
 -				starfish -root				    \n\
 -				strange -root				    \n\
 -				swirl -root				    \n\
--				triangle -root				    \n\
+				triangle -root				    \n\
 -				xjack -root -delay 30089		    \n\
 -				xlyap -root				    \n\
 - GL: 				atlantis -root				    \n\
@@ -109,7 +109,8 @@ programs:								      \
 -				interference -root			    \n\
 -				kumppa -root				    \n\
 - GL: 				lament -root				    \n\
--				moire2 -root				    \n\
+-				moire2 -root -delay 51327 -ncolors 255	      \
+				  -thickness 3				    \n\
 - GL: 				sonar -root -ping			      \
 				  google.com,facebook.com,twitter.com,yahoo.com,flickr.com,www.apple.com,wikipedia.org,linux.org,youtube.com,disqus.com,blogger.com,wordpress.com,tumblr.com,whitehouse.gov   \
 				  -no-wobble				    \n\
@@ -150,7 +151,7 @@ programs:								      \
 - GL: 				gltext -root				    \n\
 - GL: 				menger -root				    \n\
 - GL: 				molecule -root				    \n\
-				rotzoomer -root				    \n\
+				rotzoomer -root -duration 20		    \n\
 -				speedmine -root				    \n\
 - GL: 				starwars -root				    \n\
 - GL: 				stonerview -root			    \n\
@@ -170,7 +171,7 @@ programs:								      \
 -				halftone -root				    \n\
 - GL: 				juggler3d -root				    \n\
 - GL: 				lavalite -root				    \n\
--				polyominoes -root			    \n\
+				polyominoes -root -delay 0 -cycles 500	    \n\
 - GL: 				queens -root				    \n\
 - GL: 				sballs -root				    \n\
 - GL: 				spheremonics -root			    \n\
@@ -184,7 +185,7 @@ programs:								      \
 - GL: 				blocktube -root				    \n\
 - GL: 				bouncingcow -root -count 4		    \n\
 -				cloudlife -root				    \n\
-- GL: 				cubestorm -root				    \n\
+  GL: 				cubestorm -root				    \n\
 -				eruption -root				    \n\
 - GL: 				flipflop -root				    \n\
 - GL: 				flyingtoasters -root			    \n\
@@ -208,11 +209,11 @@ programs:								      \
 				  68					    \n\
 - GL: 				antinspect -root			    \n\
 -				fireworkx -root				    \n\
-				fuzzyflakes -root -layers 8		    \n\
+				fuzzyflakes -root -layers 8 -random-colors  \n\
 				interaggregate -root			    \n\
--				intermomentary -root			    \n\
+				intermomentary -root -num-discs 233	    \n\
 -				memscroller -root			    \n\
-- GL: 				noof -root				    \n\
+  GL: 				noof -root				    \n\
 				pacman -root				    \n\
 - GL: 				pinion -root				    \n\
 - GL: 				polyhedra -root				    \n\
@@ -243,7 +244,7 @@ programs:								      \
 -				m6502 -root				    \n\
 - GL: 				moebiusgears -root			    \n\
 - GL: 				voronoi -root				    \n\
-- GL: 				hypnowheel -root			    \n\
+  GL: 				hypnowheel -root			    \n\
 - GL: 				klein -root				    \n\
 -				lcdscrub -root				    \n\
 - GL: 				photopile -root				    \n\
@@ -260,7 +261,7 @@ programs:								      \
 				binaryring -root			    \n\
 - GL: 				cityflow -root				    \n\
 - GL: 				geodesicgears -root			    \n\
-- GL: 				projectiveplane -root			    \n\
+  GL: 				projectiveplane -root			    \n\
 - GL: 				romanboy -root				    \n\
 -				tessellimage -root -duration2 0.1	      \
 				  -max-depth 78097			    \n\
@@ -271,7 +272,8 @@ programs:								      \
 - GL: 				discoball -root				    \n\
 - GL: 				dymaxionmap -root			    \n\
 - GL: 				energystream -root			    \n\
-- GL: 				hexstrut -root				    \n\
+- GL: 				hexstrut -root -speed 5 -count 48	      \
+				  -thickness 0.4288			    \n\
 - GL: 				hydrostat -root				    \n\
 - GL: 				raverhoop -root				    \n\
 - GL: 				splodesic -root				    \n\

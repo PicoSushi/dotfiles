@@ -122,3 +122,7 @@ if [[ -d $HOME/.local/google-cloud-sdk ]]; then
     # The next line enables shell command completion for gcloud.
     source "$HOME/.local/google-cloud-sdk/completion.zsh.inc"
 fi
+
+if hash direnv >& /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
