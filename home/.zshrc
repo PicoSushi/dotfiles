@@ -39,7 +39,10 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 function powerline_precmd() {
-    PS1="$($GOPATH/src/github.com/$USER/powerline-go/powerline-go -error $? -shell zsh)"
+    if ! hash powerline-go 2>/dev/null; then
+        return
+    fi
+    PS1="$(powerline-go -error $? -shell zsh -modules venv,user,host,ssh,cwd,hg,jobs,exit -newline)"
 }
 
 # ================================================================
