@@ -42,7 +42,7 @@ function powerline_precmd() {
     if ! hash powerline-go 2>/dev/null; then
         return
     fi
-    PS1="$(powerline-go -error $? -shell zsh -modules aws,venv,user,host,ssh,cwd,perms,git,hg,jobs,exit -newline)"
+    PS1="$(powerline-go -colorize-hostname -error $? -shell zsh -modules aws,venv,user,host,ssh,cwd,perms,git,hg,jobs,exit -newline)"
 }
 
 # ================================================================
