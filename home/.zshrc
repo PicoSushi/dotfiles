@@ -5,7 +5,7 @@ autoload -Uz promptinit
 promptinit
 prompt fade
 
-setopt histignorealldups sharehistory
+setopt sharehistory
 setopt auto_cd
 
 # Use emacs keybindings
