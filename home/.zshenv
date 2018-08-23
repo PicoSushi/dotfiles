@@ -35,7 +35,11 @@ export LC_ALL="${LANGUAGE}"
 export LC_CTYPE="${LANGUAGE}"
 
 # Editor
-export EDITOR=nano
+if hash jed 2>/dev/null; then
+    export EDITOR=jed
+else
+    export EDITOR=nano
+fi
 export CVSEDITOR="${EDITOR}"
 export SVN_EDITOR="${EDITOR}"
 export GIT_EDITOR="${EDITOR}"
