@@ -94,6 +94,8 @@ values."
                                       twittering-mode
                                       wakatime-mode
 
+                                      ddskk
+
                                       ;; file editing modes
                                       editorconfig
                                       nginx-mode
