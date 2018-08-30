@@ -76,8 +76,8 @@ bindkey '^s' pet-select
 # ================================================================
 # zplug
 # ================================================================
-if [[ -f /usr/share/zplug/init.zsh ]]; then
-    source /usr/share/zplug/init.zsh
+if [[ -f ~/.zplug/init.zsh ]]; then
+    source ~/.zplug/init.zsh
 
     if ! zplug check --verbose; then
         printf "Install zplug? [y/N]: "
@@ -113,8 +113,8 @@ if [[ -f ~/.alias ]]; then
     source ~/.alias
 fi
 
-if [[ -f ~/.local/bin/aws_zsh_completer.sh ]]; then
-    source ~/.local/bin/aws_zsh_completer.sh
+if hash aws_zsh_completer.sh; then
+    source "$(which aws_zsh_completer.sh)"
 fi
 
 if [[ -f ~/.zshrc.local ]]; then
