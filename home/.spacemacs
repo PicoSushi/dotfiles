@@ -529,9 +529,11 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-c t") 'twittering-update-status-interactive)
 
   ;; skk
-  (if (file-readable-p "/usr/share/skk/SKK-JISYO.L.cdb")
-      (setq skk-cdb-large-jisyo "/usr/share/skk/SKK-JISYO.L.cdb")
-    )
+  (cond ((file-readable-p "/usr/share/skk/SKK-JISYO.L.cdb")
+         (setq skk-cdb-large-jisyo "/usr/share/skk/SKK-JISYO.L.cdb"))
+        ((file-readable-p "/usr/share/skk/SKK-JISYO.L")
+         (setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L"))
+        )
   (if (file-exists-p "~/Dropbox/config/skk")
       ;; awful!
       (progn
