@@ -9,6 +9,7 @@ path=( \
                      /sbin \
                      /usr/sbin \
                      /usr/local/sbin(N-/) \
+                     $(ruby -e 'print Gem.user_dir')/bin \
 )
 
 # NOTE: set fpath before compinit
