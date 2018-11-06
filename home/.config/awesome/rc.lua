@@ -14,9 +14,6 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- For dynamic widgets
 local vicious = require("vicious")
 
--- Load Debian menu entries
-require("debian.menu")
-
 -- Set language to Japanese
 os.setlocale("ja_JP.UTF-8")
 
@@ -120,7 +117,6 @@ myawesomemenu = {
 mymainmenu = awful.menu({
       items = {
          { "awesome", myawesomemenu, beautiful.awesome_icon },
-         { "debian", debian.menu.Debian_menu.Debian },
          { "open terminal", terminal },
          { "lock screen",
            function () awful.util.spawn_with_shell("xscreensaver-command -lock") end
