@@ -65,6 +65,7 @@ This function should only modify configuration layer settings."
      latex
      sql
      typescript
+     lua
 
      auto-completion                    ;; should be lower
      syntax-checking
@@ -93,14 +94,12 @@ This function should only modify configuration layer settings."
                                       howm
                                       autoinsert
                                       ;; tabbar
-                                      ;; ddskk
+                                      ddskk
                                       rainbow-mode
                                       git-gutter
                                       desktop
                                       twittering-mode
                                       wakatime-mode
-
-                                      ddskk
 
                                       ;; file editing modes
                                       editorconfig
@@ -114,10 +113,10 @@ This function should only modify configuration layer settings."
 
                                       yaml-mode
                                       ;; slack
-                                      alert
-                                      emojify
-                                      ag
-                                      navi2ch
+                                      ;; alert
+                                      ;; emojify
+                                      ;; ag
+                                      ;; navi2ch
                                       )
 
    ;; A list of packages that cannot be updated.
