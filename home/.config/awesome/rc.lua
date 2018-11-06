@@ -110,7 +110,7 @@ myawesomemenu = {
     { "hotkeys", function() return false, hotkeys_popup.show_help end},
     { "manual", terminal .. " -e man awesome" },
     { "edit config", editor_cmd .. " " .. awesome.conffile },
-    { "restart", awesome.restart },
+    { "edit theme", string.format("%s %s", editor, ".config/awesome/themes/cesious/theme.lua") },    { "restart", awesome.restart },
     { "quit", function() awesome.quit() end}
 }
 
@@ -369,10 +369,18 @@ globalkeys = awful.util.table.join(
         {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
         {description = "decrease the number of columns", group = "layout"}),
+    awful.key({ modkey, "Control"}, "Escape", function () awful.util.spawn("/usr/bin/rofi -show drun -modi drun") end,
+        {description = "launch rofi", group = "launcher"}),
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
         {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
         {description = "select previous", group = "layout"}),
+    awful.key({                   }, "Print", function () awful.util.spawn("/usr/bin/i3-scrot -d")   end,
+        {description = "capture a screenshot", group = "screenshot"}),
+    awful.key({"Control"          }, "Print", function () awful.util.spawn("/usr/bin/i3-scrot -w")   end,
+        {description = "capture a screenshot of active window", group = "screenshot"}),
+    awful.key({"Shift"            }, "Print", function () awful.util.spawn("/usr/bin/i3-scrot -s")   end,
+        {description = "capture a screenshot of selection", group = "screenshot"}),
 
     awful.key({ modkey, "Control" }, "n",
         function ()
@@ -578,17 +586,18 @@ awful.rules.rules = {
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
-client.connect_signal("manage", function (c)
-                          -- Set the windows at the slave,
-                          -- i.e. put it at the end of others instead of setting it master.
-                          -- if not awesome.startup then awful.client.setslave(c) end
+client.connect_signal(
+    "manage", function (c)
+        -- Set the windows at the slave,
+        -- i.e. put it at the end of others instead of setting it master.
+        -- if not awesome.startup then awful.client.setslave(c) end
 
-                          if awesome.startup and
-                              not c.size_hints.user_position
-                          and not c.size_hints.program_position then
-                              -- Prevent clients from being unreachable after screen count changes.
-                              awful.placement.no_offscreen(c)
-                          end
+        if awesome.startup and
+            not c.size_hints.user_position
+        and not c.size_hints.program_position then
+            -- Prevent clients from being unreachable after screen count changes.
+            awful.placement.no_offscreen(c)
+        end
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
@@ -635,11 +644,12 @@ client.connect_signal(
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-                          if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-                          and awful.client.focus.filter(c) then
-                              client.focus = c
-                          end
+client.connect_signal(
+    "mouse::enter", function(c)
+        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+        and awful.client.focus.filter(c) then
+            client.focus = c
+        end
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
