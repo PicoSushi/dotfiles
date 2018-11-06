@@ -113,7 +113,7 @@ if [[ -f ~/.alias ]]; then
     source ~/.alias
 fi
 
-if hash aws_zsh_completer.sh; then
+if hash aws_zsh_completer.sh >& /dev/null; then
     source "$(which aws_zsh_completer.sh)"
 fi
 
