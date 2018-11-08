@@ -726,3 +726,6 @@ layers configuration. You are free to put any user code."
   ;; ================================
   ;; THE END of dotspacemacs/user-config
   )
+
+;; Do not write anything past this comment. This is where Emacs will
+;; auto-generate custom variable definitions.
