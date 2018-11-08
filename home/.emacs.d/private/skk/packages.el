@@ -65,7 +65,7 @@ Each entry is either:
 
 (defun skk/init-skk-aquamarine ()
   (use-package skk-aquamarine)
-  ;; :defer t
+  :defer t
   :init
   (progn
     (setq skk-aquamarine-use-normal-y t)
