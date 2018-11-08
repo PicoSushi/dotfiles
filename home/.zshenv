@@ -77,8 +77,7 @@ export PATH="$GOBIN:$PATH"
 export CORRECT_IGNORE='_*'
 export CORRECT_IGNORE_FILE='.*'
 
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-export WORDCHARS='*?.[]~&;!#$%^(){}<>'
+export WORDCHARS='*?~;!#$%^(){}<>'
 
 # History file and its size
 export HISTFILE=~/.zsh_history
