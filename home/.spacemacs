@@ -100,6 +100,7 @@ This function should only modify configuration layer settings."
                                       desktop
                                       twittering-mode
                                       wakatime-mode
+                                      yasnippet-snippets
 
                                       ;; file editing modes
                                       editorconfig
