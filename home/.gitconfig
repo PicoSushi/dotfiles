@@ -45,3 +45,5 @@
 
 	sb  = show-branch
 	d   = diff
+[github]
+	user = PicoSushi
