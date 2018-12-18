@@ -18,6 +18,7 @@
 
 [push]
 	default = simple
+	followTags = true
 [pull]
 	ff = only
 [merge]
@@ -57,3 +58,9 @@
   tool = meld
 [mergetool "meld"]
 	cmd = meld $LOCAL $BASE $REMOTE --auto-merge --output "$MERGED"
+[magithub]
+	online = false
+[magithub "status"]
+	includeStatusHeader = false
+	includePullRequestsSection = false
+	includeIssuesSection = false
