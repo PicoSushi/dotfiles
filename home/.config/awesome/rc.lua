@@ -52,6 +52,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/themes/neat-zenburn/theme.lua")
+beautiful.useless_gap = 2
 
 -- set notification icon size to 100
 naughty.config.defaults['icon_size'] = 32
@@ -232,7 +233,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 tag_1 = "1.Emacs"
 tag_2 = "2.Web"
 tag_3 = "3.Term"
-tag_4 = "4."
+tag_4 = "4.TweetDeck"
 tag_5 = "5.File"
 tag_6 = "6.Lock"
 tag_7 = "7.Slack"
