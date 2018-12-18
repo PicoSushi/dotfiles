@@ -3,8 +3,8 @@ function fish_prompt
 end
 
 function fish_right_prompt
-    set ok_kaomoji "('_')"
-    set ng_kaomoji "(>_<)\n(;_;)"
+    set ok_kaomoji "('_')\n(◕‿◕)"
+    set ng_kaomoji "(>_<)\n(;_;)\n(〃＞＿＜;〃)"
 
     if [ $status -eq 0 ]
         set_color green
