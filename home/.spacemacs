@@ -46,6 +46,7 @@ This function should only modify configuration layer settings."
      better-defaults
      git
      github
+     asciidoc
      markdown
      csv
 
@@ -55,6 +56,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      ruby
+     haskell
      (python
       :variables
       python-test-runner 'pytest
