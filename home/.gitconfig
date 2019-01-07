@@ -18,6 +18,7 @@
 
 [push]
 	default = simple
+	followTags = true
 [pull]
 	ff = only
 

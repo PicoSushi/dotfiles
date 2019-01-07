@@ -370,8 +370,6 @@ globalkeys = awful.util.table.join(
         {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
         {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control"}, "Escape", function () awful.util.spawn("/usr/bin/rofi -show drun -modi drun") end,
-        {description = "launch rofi", group = "launcher"}),
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
         {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
@@ -401,6 +399,12 @@ globalkeys = awful.util.table.join(
         end,
         {description = "run prompt", group = "launcher"}
     ),
+
+    awful.key({ modkey }, "c",
+      function ()
+        awful.util.spawn("/usr/bin/rofi -show drun -modi drun")
+      end,
+      {description = "launch rofi", group = "launcher"}),
 
     awful.key({ modkey }, "x",
         function ()
