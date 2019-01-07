@@ -18,4 +18,20 @@ function fish_right_prompt
     echo -n "["
     date "+%Y/%m/%d %H:%M:%S"
     echo -n "]"
+    if [ -z {$BUNDLE_GEMFILE} ];
+        echo ''
+    else
+        echo '('; and echo {$BUNDLE_GEMFILE} | rev | cut -d '/' -f 2 | rev; and echo ')'
+    end
 end
+rvm default
+
+# direnv
+eval (direnv hook fish)
+
+# ruby
+# rbenv init - | source
+# set -gx PATH (gem environment | egrep "USER INSTALLATION DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2)/bin $PATH
+
+# rbenv
+status --is-interactive; and source (rbenv init -|psub)
