@@ -35,3 +35,8 @@ eval (direnv hook fish)
 
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
+
+set -gx EDITOR nano
+if type -q jed
+    set -gx EDITOR jed
+end
