@@ -29,12 +29,10 @@ rvm default
 # direnv
 eval (direnv hook fish)
 
-# ruby
-# rbenv init - | source
-# set -gx PATH (gem environment | egrep "USER INSTALLATION DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2)/bin $PATH
-
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
+# gem bin
+set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
 
 set -gx EDITOR nano
 if type -q jed
