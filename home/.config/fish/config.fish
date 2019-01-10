@@ -18,6 +18,25 @@ function fish_right_prompt
     echo -n "["
     date "+%Y/%m/%d %H:%M:%S"
     echo -n "]"
+    if [ -z {$BUNDLE_GEMFILE} ];
+        echo ''
+    else
+        echo '('; and echo {$BUNDLE_GEMFILE} | rev | cut -d '/' -f 2 | rev; and echo ')'
+    end
+end
+rvm default
+
+# direnv
+eval (direnv hook fish)
+
+# rbenv
+status --is-interactive; and source (rbenv init -|psub)
+# gem bin
+set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
+
+set -gx EDITOR nano
+if type -q jed
+    set -gx EDITOR jed
 end
 
 # Golang
