@@ -19,3 +19,7 @@ function fish_right_prompt
     date "+%Y/%m/%d %H:%M:%S"
     echo -n "]"
 end
+
+# Golang
+set -x GOPATH $HOME
+set -x PATH $PATH $HOME/bin
