@@ -56,6 +56,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      ruby
+     shell-scripts
      haskell
      (python
       :variables

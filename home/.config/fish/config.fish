@@ -38,3 +38,7 @@ set -gx EDITOR nano
 if type -q jed
     set -gx EDITOR jed
 end
+
+# Golang
+set -x GOPATH $HOME
+set -x PATH $PATH $HOME/bin
