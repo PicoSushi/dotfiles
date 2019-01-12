@@ -27,7 +27,9 @@ end
 rvm default
 
 # direnv
-eval (direnv hook fish)
+if type -q direnv
+    eval (direnv hook fish)
+end
 
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
