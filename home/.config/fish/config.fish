@@ -32,7 +32,10 @@ if type -q direnv
 end
 
 # rbenv
-status --is-interactive; and source (rbenv init -|psub)
+if type -q rbenv
+    status --is-interactive; and source (rbenv init -|psub)
+end
+
 # gem bin
 set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
 
