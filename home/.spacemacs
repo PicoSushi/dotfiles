@@ -629,6 +629,9 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
   (global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
 
+  ;; golang
+  (setq go-format-before-save t)
+
   ;; markdown
   (setq markdown-command "marked")
 
