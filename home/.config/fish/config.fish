@@ -24,7 +24,6 @@ function fish_right_prompt
         echo '('; and echo {$BUNDLE_GEMFILE} | rev | cut -d '/' -f 2 | rev; and echo ')'
     end
 end
-rvm default
 
 # direnv
 if type -q direnv
