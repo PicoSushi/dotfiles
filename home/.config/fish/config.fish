@@ -25,6 +25,17 @@ function fish_right_prompt
     end
 end
 
+# pager
+set -gx PAGER less
+if type -q bat
+    set -gx PAGER bat
+end
+
+set -gx EDITOR nano
+if type -q jed
+    set -gx EDITOR jed
+end
+
 # direnv
 if type -q direnv
     eval (direnv hook fish)
@@ -37,11 +48,6 @@ end
 
 # gem bin
 set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
-
-set -gx EDITOR nano
-if type -q jed
-    set -gx EDITOR jed
-end
 
 # Golang
 set -x GOPATH $HOME
