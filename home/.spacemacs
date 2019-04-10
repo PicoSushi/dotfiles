@@ -39,6 +39,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     helm
      ;; local packages
      skk
 
@@ -46,13 +47,19 @@ This function should only modify configuration layer settings."
      better-defaults
      git
      github
-     asciidoc
      markdown
+     asciidoc
+     multiple-cursors
+     treemacs
      csv
 
      ;; programming language
      emacs-lisp
-     go
+     (go
+      :variables
+      godoc-at-point-function 'godoc-gogetdoc
+      ;; go-backend 'lsp
+      )
      html
      javascript
      ruby
@@ -487,8 +494,7 @@ It should only modify the values of Spacemacs settings."
    ;; Run `spacemacs/prettify-org-buffer' when
    ;; visiting README.org files of Spacemacs.
    ;; (default nil)
-   dotspacemacs-pretty-docs nil
-   ))
+   dotspacemacs-pretty-docs nil))
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
