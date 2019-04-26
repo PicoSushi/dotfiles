@@ -25,6 +25,13 @@ function fish_right_prompt
     end
 end
 
+# rename tmux window
+function window_rename --on-event fish_preexec
+    if test -n (echo $TERM | grep -e screen -e tmux)
+        tmux rename-window (printf "%.16s" $argv[1])
+    end
+end
+
 # pager
 set -gx PAGER less
 if type -q bat
