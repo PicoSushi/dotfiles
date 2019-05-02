@@ -27,7 +27,7 @@ end
 
 # rename tmux window
 function window_rename --on-event fish_preexec
-    if test -n (echo $TERM | grep -e screen -e tmux)
+    if test -n (echo $TERM | grep -e screen -e tmux) && test -n $argv[1]
         tmux rename-window (printf "%.16s" $argv[1])
     end
 end
