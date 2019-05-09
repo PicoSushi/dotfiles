@@ -39,7 +39,6 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
      ;; local packages
      skk
 
@@ -50,7 +49,6 @@ This function should only modify configuration layer settings."
      markdown
      asciidoc
      multiple-cursors
-     treemacs
      csv
 
      ;; programming language
@@ -84,13 +82,16 @@ This function should only modify configuration layer settings."
      games
      xkcd
      speed-reading
+     spotify
 
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; version-control
+     ;; syntax-checking
+     treemacs
+     version-control
      )
 
    ;; List of additional packages that will be installed without being
@@ -106,7 +107,6 @@ This function should only modify configuration layer settings."
                                       ;; tabbar
                                       ddskk
                                       rainbow-mode
-                                      git-gutter
                                       desktop
                                       twittering-mode
                                       wakatime-mode
@@ -256,7 +256,6 @@ It should only modify the values of Spacemacs settings."
                          spacemacs-dark
                          ;; spacemacs-light
                          ;; solarized-light
-
                          ;; solarized-dark
                          ;; leuven
                          monokai
@@ -279,7 +278,8 @@ It should only modify the values of Spacemacs settings."
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               ;:powerline-scale 1.1
+)
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
 
@@ -382,11 +382,11 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 95
+   dotspacemacs-active-transparency 98
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 85
+   dotspacemacs-inactive-transparency 95
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -514,6 +514,13 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (require 'skk nil t)
   )
 
+(defun dotspacemacs/user-load ()
+  "Library to load while dumping.
+This function is called only while dumping Spacemacs configuration. You can
+`require' or `load' the libraries of your choice that will be included in the
+dump."
+  )
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -532,6 +539,7 @@ layers configuration. You are free to put any user code."
   (global-set-key [f5] 'revert-buffer)
   (global-set-key (kbd "<f3>")   'ahs-forward)
   (global-set-key (kbd "S-<f3>") 'ahs-backward)
+  (global-set-key (kbd "M-m a m s c") 'spotify-current)
 
   (auto-image-file-mode t)                ; 画像ファイルを表示
   (menu-bar-mode -1)                      ; メニューバーを消す
@@ -561,6 +569,7 @@ layers configuration. You are free to put any user code."
   (setq gc-cons-threshold 268435456)      ; no GC until 256 MiB
   (setq make-backup-files nil)
   (spacemacs/toggle-transparency)
+  (setq x-select-enable-clipboard-manager nil)
 
   ;;show [EOF] at EOF
   (defun set-buffer-end-mark()
@@ -574,61 +583,6 @@ layers configuration. You are free to put any user code."
 
   (add-to-list 'auto-mode-alist '("\.gas\\'" . js2-mode))
   (setq js2-basic-offset 2)
-
-  ;; desktop-mode
-  (setq desktop-load-locked-desktop t)
-  (desktop-save-mode 1)
-  (defun my-desktop-save ()
-    (interactive)
-    ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
-    (if (eq (desktop-owner) (emacs-pid))
-        (desktop-save desktop-dirname)))
-  (add-hook 'auto-save-hook 'my-desktop-save)
-
-  ;; =================
-  ;; autoinsert
-  ;; =================
-  (setq user-id-string (getenv "USER"))
-  (setq user-name-string (getenv "USERNAME"))
-  (setq user-mail-address (getenv "EMAIL"))
-  (setq auto-insert-directory "~/.emacs.d/private/local/templates")
-
-  (setq auto-insert-alist
-        '(
-          ;; ファイル名で決定されるもの
-          ("setup\\.py\\'" . ["template.setup.py" my-template])
-          ("_test\\.py\\'" . ["_test.py" my-template])
-          ("urls\\.py\\'" . ["template.urls.py" my-template])
-          ("README\\.md\\'" . ["template.README.md" my-template])
-          ;; 拡張子で決定されるもの
-          ("\\.rst\\'" . ["template.rst" my-template])
-          ("\\.py\\'" . ["template.py" my-template])
-          ("\\.c\\'" . ["template.c" my-template])
-          ("\\.sh\\'" . ["template.sh" my-template])
-          ("\\.go\\'" . ["template.go" my-template])
-          ("\\.html\\'" . ["template.html" my-template])))
-  (setq auto-insert-query nil)            ; Always inserts template.
-
-  (defvar template-replacements-alists
-    '(("%file%"             . (lambda () (file-name-nondirectory (buffer-file-name))))
-      ("%file-without-ext%" . (lambda () (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))))
-      ("%directory%" . (lambda () (file-name-nondirectory (directory-file-name (file-name-directory buffer-file-name)))))
-      ("%date%" . (lambda() (current-time-string)))
-      ("%id%" . (lambda () (identity user-id-string)))
-      ("%name%" . (lambda () (identity user-name-string)))
-      ("%mail%" . (lambda () (identity user-mail-address)))
-      ))
-
-  (defun my-template ()
-    (time-stamp)
-    (mapc #'(lambda(c)
-              (progn
-                (goto-char (point-min))
-                (replace-string (car c) (funcall (cdr c)) nil)))
-          template-replacements-alists)
-    (goto-char (point-max))
-    (message "Generated."))
-  (add-hook 'find-file-not-found-hooks 'auto-insert)
 
   ;; git-gutter
   (global-git-gutter-mode)
