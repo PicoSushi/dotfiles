@@ -3,7 +3,7 @@ function fish_prompt
 end
 
 function fish_greeting
-    timeout --preserve-status --signal=KILL 1 curl --silent 'https://saizeriya-1000yen.herokuapp.com/get' | pup 'div.box > h2 text{}' 2>/dev/null | cowsay
+    timeout --preserve-status --signal=KILL 2 curl --silent 'https://saizeriya-1000yen.herokuapp.com/get' | pup 'div.box > h2 text{}' 2>/dev/null | cowsay -n -f (cowsay -l | tail -n +2 | tr ' ' '\n' | sort -R | head -1)
 end
 
 # rename tmux window
