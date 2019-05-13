@@ -1,3 +1,4 @@
 bin
 .config
 .emacs.d/private/skk
+.byobu
