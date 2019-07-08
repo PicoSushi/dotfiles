@@ -2,16 +2,6 @@ function fish_prompt
     ~/bin/powerline-go -max-width 0 -colorize-hostname -error $status -shell bare -modules aws,terraform-workspace,venv,user,host,ssh,cwd,perms,jobs,git,hg,exit -newline
 end
 
-function fish_greeting
-    if type -q pup
-        if type -q ponysay
-            timeout --preserve-status --signal=KILL 2 curl --silent 'https://saizeriya-1000yen.herokuapp.com/get' | pup 'div.box > h2 text{}' 2>/dev/null | ponysay
-        else if type -q cowsay
-            timeout --preserve-status --signal=KILL 2 curl --silent 'https://saizeriya-1000yen.herokuapp.com/get' | pup 'div.box > h2 text{}' 2>/dev/null | cowsay -n -f (cowsay -l | tail -n +2 | tr ' ' '\n' | sort -R | head -1)
-        end
-    end
-end
-
 # rename tmux window
 function window_rename --on-event fish_preexec
     if test -n (echo $TERM | grep -e screen -e tmux) ;and test -n $argv[1]
