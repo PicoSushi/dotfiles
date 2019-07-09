@@ -78,6 +78,8 @@ This function should only modify configuration layer settings."
      sql
      typescript
      lua
+     php
+     systemd
 
      auto-completion                    ;; should be lower
      syntax-checking
