@@ -36,3 +36,9 @@ set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 |
 # Golang
 set -x GOPATH $HOME
 set -x PATH $PATH $HOME/bin
+
+# Rust
+set -x PATH $PATH $HOME/.cargo/bin
+
+# opam configuration
+source /home/picosushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
