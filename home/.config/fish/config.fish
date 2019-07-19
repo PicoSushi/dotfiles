@@ -46,5 +46,10 @@ if test -d $HOME/.cargo/bin
     set -x PATH $PATH $HOME/.cargo/bin
 end
 
+# fuck
+if type -q thefuck
+    thefuck --alias | source
+end
+
 # opam configuration
 source /home/picosushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
