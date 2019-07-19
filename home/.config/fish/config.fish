@@ -42,7 +42,9 @@ set -x GOPATH $HOME
 set -x PATH $PATH $HOME/bin
 
 # Rust
-set -x PATH $PATH $HOME/.cargo/bin
+if test -d $HOME/.cargo/bin
+    set -x PATH $PATH $HOME/.cargo/bin
+end
 
 # opam configuration
 source /home/picosushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
