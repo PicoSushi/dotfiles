@@ -46,6 +46,13 @@ if test -d $HOME/.cargo/bin
     set -x PATH $PATH $HOME/.cargo/bin
 end
 
+# fcitx
+if type -q fcitx
+    export GTK_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+    export QT_IM_MODULE=fcitx
+end
+
 # fuck
 if type -q thefuck
     thefuck --alias | source
