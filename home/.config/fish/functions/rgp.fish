@@ -1,3 +1,3 @@
 function rgp --description "ripgrep with pager"
-    rg $argv | p
+    rg -p $argv | p
 end
