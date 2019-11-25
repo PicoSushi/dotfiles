@@ -1,3 +1,12 @@
+# ================
+# Set PATHes
+# ================
+
+# Pyenv
+if test -d $HOME/.pyenv
+    set -x PYENV_ROOT $HOME/.pyenv
+end
+
 # Golang
 set -x GOPATH $HOME
 set -x PATH $PATH $HOME/bin
