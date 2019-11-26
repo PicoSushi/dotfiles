@@ -201,8 +201,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
-   ;; (default nil)
-   dotspacemacs-verify-spacelpa-archives nil
+   ;; (default t)
+   dotspacemacs-verify-spacelpa-archives t
 
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
@@ -567,7 +567,6 @@ before packages are loaded."
   (show-paren-mode 1)                     ; 対応する括弧を光らせる。
   (setq visible-bell t)                   ; visible bell
   (setq show-paren-delay 0)
-  ;; (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる。
   (setq kill-whole-line t) ; 行の先頭でC-kを一回押すだけで行全体を消去する
   (setq require-final-newline t)          ; 最終行に必ず一行挿入する
   (setq next-line-add-newlines nil) ; バッファの最後でnewlineで新規行を追加するのを禁止する
@@ -662,10 +661,6 @@ before packages are loaded."
   ;; need to make symlink at Dropbox install
   (cond ((file-readable-p "~/.wakatime.cfg")
          (global-wakatime-mode)))
-
-  ;; alert
-  (setq alert-default-style 'notifications)
-
   ;; ================================
   ;; THE END of dotspacemacs/user-config
   )
