@@ -655,6 +655,8 @@ before packages are loaded."
   (setq skk-keep-record t)                ;統計を取る
   (setq skk-auto-save-timer
         (run-with-idle-timer 600 t 'skk-save-jisyo))
+  ;; lsp
+  (setq lsp-pyls-plugins-pycodestyle-max-line-length 99)
 
   ;; wakatime
   ;; need to make symlink at Dropbox install
