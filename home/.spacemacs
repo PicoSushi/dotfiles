@@ -26,7 +26,6 @@ This function should only modify configuration layer settings."
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
 
-   ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
@@ -590,33 +589,6 @@ before packages are loaded."
   (setq make-backup-files nil)
   (spacemacs/toggle-transparency)
   (setq x-select-enable-clipboard-manager nil)
-
-  ;;show [EOF] at EOF
-  (defun set-buffer-end-mark()
-    (let ((overlay (make-overlay (point-max) (point-max))))
-      (overlay-put overlay 'before-string #("[EOF]" 0 5 (face highlight)))
-      (overlay-put overlay 'insert-behind-hooks
-                   '((lambda (overlay after beg end &optional len)
-                       (when after
-                         (move-overlay overlay (point-max) (point-max))))))))
-  (add-hook 'find-file-hooks 'set-buffer-end-mark)
-
-  (add-to-list 'auto-mode-alist '("\.gas\\'" . js2-mode))
-  (setq js2-basic-offset 2)
-
-  ;; git-gutter
-  (global-git-gutter-mode)
-  (global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
-  (global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
-
-  ;; golang
-  (setq go-format-before-save t)
-
-  ;; markdown
-  (setq markdown-command "marked")
-
-  ;; flycheck
-  '(custom-set-variables '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))) ;jshint,jscsを使わないように
 
   ;; modelineに色を
   (set-face-attribute 'mode-line nil
