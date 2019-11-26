@@ -616,10 +616,6 @@ before packages are loaded."
                       :background "#00FFFF"
                       :inherit 'mode-line)
 
-  ;; twitter
-  (setq twittering-icon-mode nil)
-  (setq twittering-use-master-password t)
-  (global-set-key (kbd "C-c t") 'twittering-update-status-interactive)
 
   ;; skk
   (cond ((file-readable-p "/usr/share/skk/SKK-JISYO.L.cdb")
@@ -645,13 +641,6 @@ before packages are loaded."
            (skk-toggle-kana nil))
           (t
            (skk-activate))))
-  ;; Google IME SKK変換 (Buggyなので使わないことにする)
-  ;; (if (file-executable-p "/usr/local/bin/google-ime-skk")
-  ;;     (progn
-  ;;       (setq skk-server-prog "/usr/local/bin/google-ime-skk")
-  ;;       (setq skk-server-host "0.0.0.0")
-  ;;       (setq skk-server-portnum 55100)
-  ;;       ))
   (global-set-key (kbd "C-.") 'skk-j-mode-activate)
   (global-set-key (kbd "C-<henkan>") 'skk-j-mode-activate)
   (global-set-key (kbd "C-,") 'skk-latin-mode)
@@ -677,11 +666,6 @@ before packages are loaded."
   ;; alert
   (setq alert-default-style 'notifications)
 
-  ;; google-translate
-  (setq google-translate-default-source-language "en")
-  (setq google-translate-default-target-language "ja")
-  (setq google-translate-translation-directions-alist
-        '(("en" . "ja") ("ja" . "en")))
   ;; ================================
   ;; THE END of dotspacemacs/user-config
   )
