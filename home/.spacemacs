@@ -38,65 +38,88 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; local packages
-     skk
+     ;; See also: https://develop.spacemacs.org/layers/LAYERS.html
+     ;; 1 Chats
+     ; slack
 
-     ;; non-progn packages
+     ;; 2 Checkers
+     ; spell-checking
+     syntax-checking
+
+     ;; 3 Completion
+     auto-completion
+     helm
+
+     ;; 4 Distributions
+
+     ;; 5 Emacs
      better-defaults
-     git
-     github
-     markdown
-     asciidoc
-     multiple-cursors
-     csv
+     ibuffer
 
-     ;; programming language
+     ;; 6 E-mail
+
+     ;; 7 Frameworks
+     django
+
+     ;; 8 Fun
+     emoji
+     games
+     selectric
+     xkcd
+
+     ;; 9 International support
+
+     ;; 10 Programming and markup languages
+     asciidoc
+     csv
+     c-c++
+     csv
      emacs-lisp
      (go
       :variables
       godoc-at-point-function 'godoc-gogetdoc
       ;; go-backend 'lsp
       )
-     (rust
-      :variables
-      rust-format-on-save t
-      )
-     html
-     javascript
-     ruby
-     shell-scripts
+     graphviz
      haskell
+     html
+     ipython-notebook
+     javascript
+     latex
+     lua
+     markdown
+     php
      (python
       :variables
       python-test-runner 'pytest
       python-enable-yapf-format-on-save t
       )
-     django
-     c-c++
-     latex
+     ruby
+     (rust
+      :variables
+      rust-format-on-save t
+      )
+     shell-scripts
      sql
      typescript
-     lua
-     php
-     systemd
+     yaml
 
-     auto-completion                    ;; should be lower
-     syntax-checking
 
-     ;; fun
-     games
-     xkcd
-     speed-reading
-     spotify
-
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     treemacs
+     ;; 14 Source control
+     git
      version-control
+
+     ;; 18 Tools
+     docker
+     nginx
+     systemd
+     terraform
+
+     ;; 20 Web services
+     lsp
+
+     multiple-cursors
+     treemacs
      )
 
    ;; List of additional packages that will be installed without being
