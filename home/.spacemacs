@@ -108,33 +108,9 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
                                       howm
-                                      autoinsert
-                                      ;; tabbar
                                       ddskk
-                                      rainbow-mode
-                                      desktop
-                                      twittering-mode
-                                      wakatime-mode
-                                      yasnippet-snippets
-
-                                      ;; file editing modes
-                                      editorconfig
-                                      nginx-mode
-                                      dockerfile-mode
                                       toml-mode
-                                      lua-mode
-                                      magic-latex-buffer
-                                      graphviz-dot-mode
-                                      terraform-mode
-
-                                      yaml-mode
-                                      ;; slack
-                                      ;; alert
-                                      ;; emojify
-                                      ;; ag
-                                      ;; navi2ch
                                       )
-
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
