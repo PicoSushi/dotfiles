@@ -29,13 +29,17 @@
 	insteadOf = https://github.com/
 
 [alias]
+	b   = branch
+	ba  = branch --all
+
+
 	cm  = commit --verbose
 	cmm = commit --verbose --message
 
 	co  = checkout
 	com = checkout master
 
-	ba  = branch -a
+	chp = cherry-pick
 
 	fap = fetch --all --prune
 
@@ -53,12 +57,17 @@
 [difftool "meld"]
   cmd = meld $LOCAL $REMOTE
 [merge]
-  tool = meld
+	tool = meld
 [mergetool "meld"]
-	cmd = meld $LOCAL $BASE $REMOTE --auto-merge --output "$MERGED"
+	cmd = meld $LOCAL $BASE $REMOTE --auto-merge --output $MERGED
 [magithub]
 	online = false
 [magithub "status"]
 	includeStatusHeader = false
 	includePullRequestsSection = false
 	includeIssuesSection = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
