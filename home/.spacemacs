@@ -278,14 +278,13 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
-   ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
-   ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Ricty Nerd Font"
-                               :size 13
+
+   ;; Default font or prioritized list of fonts.
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 10.0
                                :weight normal
-                               :width normal
-                               ;:powerline-scale 1.1
-)
+                               :width normal)
+
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
 
@@ -527,8 +526,6 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  ;; must be init before skk-aquamarine
-  (require 'skk nil t)
   )
 
 (defun dotspacemacs/user-load ()
@@ -558,6 +555,11 @@ before packages are loaded."
   (global-set-key (kbd "<f3>")   'ahs-forward)
   (global-set-key (kbd "S-<f3>") 'ahs-backward)
   (global-set-key (kbd "M-m a m s c") 'spotify-current)
+  ;; multiple-cursors
+  (global-set-key (kbd "C-x c") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
   (auto-image-file-mode t)                ; 画像ファイルを表示
   (menu-bar-mode -1)                      ; メニューバーを消す
@@ -578,8 +580,11 @@ before packages are loaded."
   (setq vc-follow-symlinks t)   ; auto-follow version controlled symlink
   (setq suggest-key-bindings t) ; suggest keybinding
   (fset 'yes-or-no-p 'y-or-n-p) ; y/n
-  (setq tab-indent-width 2)
-  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
+  (setq-default show-trailing-whitespace t)
+  (setq whitespace-style '(trailing tabs spaces tab-mark spaces-mark))
+
+  ; (setq indent-tabs-mode nil)
   (setq ediff-window-setup-function 'ediff-setup-windows-plain) ; コントロール用のバッファを同一フレーム内に表示
   (setq ediff-split-window-function 'split-window-horizontally) ; diffのバッファを上下ではなく左右に並べる
   (setq-default indicate-empty-lines t)   ; バッファの終端を表示
@@ -614,54 +619,15 @@ before packages are loaded."
                       :background "#00FFFF"
                       :inherit 'mode-line)
 
-
-  ;; skk
-  (cond ((file-readable-p "/usr/share/skk/SKK-JISYO.L.cdb")
-         (setq skk-cdb-large-jisyo "/usr/share/skk/SKK-JISYO.L.cdb"))
-        ((file-readable-p "/usr/share/skk/SKK-JISYO.L")
-         (setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L"))
-        )
-  (if (file-exists-p "~/Dropbox/config/skk")
-      ;; awful!
-      (progn
-        (setq skk-user-directory "~/Dropbox/config/skk") ;SKKの設定ファイル
-        (setq skk-jisyo "~/Dropbox/config/skk/jisyo") ; が、読まれないが、こう設定するとjiysoは動く
-        ;; (setq skk-large-jisyo "~/Dropbox/config/skk/SKK-JISYO.HUGE") ; causes freeze!
-        (setq skk-jisyo-code 'utf-8)
-        (setq skk-record "~/Dropbox/config/skk/record") ;しかし、recordとstudyは反映されない
-        (setq skk-study "~/Dropbox/config/skk/study")    ;とりあえず追記しておく
-        )
-    )
-  ;; (require 'skk-decor nil t)
-  (defun skk-j-mode-activate ()
-    (interactive)
-    (cond (skk-j-mode
-           (skk-toggle-kana nil))
-          (t
-           (skk-activate))))
-  (global-set-key (kbd "C-.") 'skk-j-mode-activate)
-  (global-set-key (kbd "C-<henkan>") 'skk-j-mode-activate)
-  (global-set-key (kbd "C-,") 'skk-latin-mode)
-  (global-set-key (kbd "C-<muhenkan>") 'skk-latin-mode)
-
-  (setq skk-cursor-hiragana-color "PaleGreen")
-  (setq skk-cursor-katakana-color "HotPink1")
-  (setq skk-egg-like-newline t)         ; ▼モードでEnterを押しても改行しない
-  (setq skk-status-indicator 'minor-mode)
-  (setq skk-status-indicator 'left)
-  (setq skk-japanese-message-and-error t) ;日本語によるメッセージ、エラー表示
-  (setq skk-version-codename-ja t)      ; 日本語によるバージョン表示
-  (setq skk-use-color-cursor t)
-  (setq skk-keep-record t)                ;統計を取る
-  (setq skk-auto-save-timer
-        (run-with-idle-timer 600 t 'skk-save-jisyo))
   ;; lsp
+  (setq lsp-pyls-plugins-pycodestyle-ignore '("W191" "E101" "E117" "E123" "E126" "W504" "W605" "W606"))
   (setq lsp-pyls-plugins-pycodestyle-max-line-length 99)
+  (setq lsp-pyls-plugins-pyflakes-enabled nil)
 
   ;; wakatime
   ;; need to make symlink at Dropbox install
-  (cond ((file-readable-p "~/.wakatime.cfg")
-         (global-wakatime-mode)))
+  ;; (cond ((file-readable-p "~/.wakatime.cfg")
+  ;;        (global-wakatime-mode)))
   ;; ================================
   ;; THE END of dotspacemacs/user-config
   )
