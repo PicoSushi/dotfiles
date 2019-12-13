@@ -26,7 +26,6 @@ This function should only modify configuration layer settings."
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
 
-   ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
@@ -39,65 +38,88 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; local packages
-     skk
+     ;; See also: https://develop.spacemacs.org/layers/LAYERS.html
+     ;; 1 Chats
+     ; slack
 
-     ;; non-progn packages
+     ;; 2 Checkers
+     ; spell-checking
+     syntax-checking
+
+     ;; 3 Completion
+     auto-completion
+     helm
+
+     ;; 4 Distributions
+
+     ;; 5 Emacs
      better-defaults
-     git
-     github
-     markdown
-     asciidoc
-     multiple-cursors
-     csv
+     ibuffer
 
-     ;; programming language
+     ;; 6 E-mail
+
+     ;; 7 Frameworks
+     django
+
+     ;; 8 Fun
+     emoji
+     games
+     selectric
+     xkcd
+
+     ;; 9 International support
+
+     ;; 10 Programming and markup languages
+     asciidoc
+     csv
+     c-c++
+     csv
      emacs-lisp
      (go
       :variables
       godoc-at-point-function 'godoc-gogetdoc
       ;; go-backend 'lsp
       )
-     (rust
-      :variables
-      rust-format-on-save t
-      )
-     html
-     javascript
-     ruby
-     shell-scripts
+     graphviz
      haskell
+     html
+     ipython-notebook
+     javascript
+     latex
+     lua
+     markdown
+     php
      (python
       :variables
       python-test-runner 'pytest
       python-enable-yapf-format-on-save t
       )
-     django
-     c-c++
-     latex
+     ruby
+     (rust
+      :variables
+      rust-format-on-save t
+      )
+     shell-scripts
      sql
      typescript
-     lua
-     php
-     systemd
+     yaml
 
-     auto-completion                    ;; should be lower
-     syntax-checking
 
-     ;; fun
-     games
-     xkcd
-     speed-reading
-     spotify
-
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     treemacs
+     ;; 14 Source control
+     git
      version-control
+
+     ;; 18 Tools
+     docker
+     nginx
+     systemd
+     terraform
+
+     ;; 20 Web services
+     lsp
+
+     multiple-cursors
+     treemacs
      )
 
    ;; List of additional packages that will be installed without being
@@ -109,33 +131,9 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
                                       howm
-                                      autoinsert
-                                      ;; tabbar
                                       ddskk
-                                      rainbow-mode
-                                      desktop
-                                      twittering-mode
-                                      wakatime-mode
-                                      yasnippet-snippets
-
-                                      ;; file editing modes
-                                      editorconfig
-                                      nginx-mode
-                                      dockerfile-mode
                                       toml-mode
-                                      lua-mode
-                                      magic-latex-buffer
-                                      graphviz-dot-mode
-                                      terraform-mode
-
-                                      yaml-mode
-                                      ;; slack
-                                      ;; alert
-                                      ;; emojify
-                                      ;; ag
-                                      ;; navi2ch
                                       )
-
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -165,10 +163,10 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-enable-emacs-pdumper nil
 
-   ;; File path pointing to emacs 27.1 executable compiled with support
-   ;; for the portable dumper (this is currently the branch pdumper).
-   ;; (default "emacs-27.0.50")
-   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   ;; Name of executable file pointing to emacs 27+. This executable must be
+   ;; in your PATH.
+   ;; (default "emacs")
+   dotspacemacs-emacs-pdumper-executable-file "emacs"
 
    ;; Name of the Spacemacs dump file. This is the file will be created by the
    ;; portable dumper in the cache directory under dumps sub-directory.
@@ -202,8 +200,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
-   ;; (default nil)
-   dotspacemacs-verify-spacelpa-archives nil
+   ;; (default t)
+   dotspacemacs-verify-spacelpa-archives t
 
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
@@ -223,9 +221,6 @@ It should only modify the values of Spacemacs settings."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'emacs
-
-   ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
@@ -399,6 +394,7 @@ It should only modify the values of Spacemacs settings."
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-active-transparency 98
+
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -449,7 +445,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-smartparens-strict-mode nil
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc…
+   ;; over any automatically added closing parenthesis, bracket, quote, etc...
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
    dotspacemacs-smart-closing-parenthesis nil
 
@@ -543,10 +539,11 @@ dump."
   )
 
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
-
+  "Configuration for user code:
+This function is called at the very end of Spacemacs startup, after layer
+configuration.
+Put your configuration code here, except for variables that should be set
+before packages are loaded."
   ;; not works well in user-init
   (global-set-key (kbd "C-h") 'delete-backward-char)
   (global-set-key (kbd "C-c ;") 'comment-dwim)
@@ -569,7 +566,6 @@ layers configuration. You are free to put any user code."
   (show-paren-mode 1)                     ; 対応する括弧を光らせる。
   (setq visible-bell t)                   ; visible bell
   (setq show-paren-delay 0)
-  ;; (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる。
   (setq kill-whole-line t) ; 行の先頭でC-kを一回押すだけで行全体を消去する
   (setq require-final-newline t)          ; 最終行に必ず一行挿入する
   (setq next-line-add-newlines nil) ; バッファの最後でnewlineで新規行を追加するのを禁止する
@@ -591,33 +587,6 @@ layers configuration. You are free to put any user code."
   (setq make-backup-files nil)
   (spacemacs/toggle-transparency)
   (setq x-select-enable-clipboard-manager nil)
-
-  ;;show [EOF] at EOF
-  (defun set-buffer-end-mark()
-    (let ((overlay (make-overlay (point-max) (point-max))))
-      (overlay-put overlay 'before-string #("[EOF]" 0 5 (face highlight)))
-      (overlay-put overlay 'insert-behind-hooks
-                   '((lambda (overlay after beg end &optional len)
-                       (when after
-                         (move-overlay overlay (point-max) (point-max))))))))
-  (add-hook 'find-file-hooks 'set-buffer-end-mark)
-
-  (add-to-list 'auto-mode-alist '("\.gas\\'" . js2-mode))
-  (setq js2-basic-offset 2)
-
-  ;; git-gutter
-  (global-git-gutter-mode)
-  (global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
-  (global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
-
-  ;; golang
-  (setq go-format-before-save t)
-
-  ;; markdown
-  (setq markdown-command "marked")
-
-  ;; flycheck
-  '(custom-set-variables '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))) ;jshint,jscsを使わないように
 
   ;; modelineに色を
   (set-face-attribute 'mode-line nil
@@ -645,10 +614,6 @@ layers configuration. You are free to put any user code."
                       :background "#00FFFF"
                       :inherit 'mode-line)
 
-  ;; twitter
-  (setq twittering-icon-mode nil)
-  (setq twittering-use-master-password t)
-  (global-set-key (kbd "C-c t") 'twittering-update-status-interactive)
 
   ;; skk
   (cond ((file-readable-p "/usr/share/skk/SKK-JISYO.L.cdb")
@@ -674,13 +639,6 @@ layers configuration. You are free to put any user code."
            (skk-toggle-kana nil))
           (t
            (skk-activate))))
-  ;; Google IME SKK変換 (Buggyなので使わないことにする)
-  ;; (if (file-executable-p "/usr/local/bin/google-ime-skk")
-  ;;     (progn
-  ;;       (setq skk-server-prog "/usr/local/bin/google-ime-skk")
-  ;;       (setq skk-server-host "0.0.0.0")
-  ;;       (setq skk-server-portnum 55100)
-  ;;       ))
   (global-set-key (kbd "C-.") 'skk-j-mode-activate)
   (global-set-key (kbd "C-<henkan>") 'skk-j-mode-activate)
   (global-set-key (kbd "C-,") 'skk-latin-mode)
@@ -697,20 +655,13 @@ layers configuration. You are free to put any user code."
   (setq skk-keep-record t)                ;統計を取る
   (setq skk-auto-save-timer
         (run-with-idle-timer 600 t 'skk-save-jisyo))
+  ;; lsp
+  (setq lsp-pyls-plugins-pycodestyle-max-line-length 99)
 
   ;; wakatime
   ;; need to make symlink at Dropbox install
   (cond ((file-readable-p "~/.wakatime.cfg")
          (global-wakatime-mode)))
-
-  ;; alert
-  (setq alert-default-style 'notifications)
-
-  ;; google-translate
-  (setq google-translate-default-source-language "en")
-  (setq google-translate-default-target-language "ja")
-  (setq google-translate-translation-directions-alist
-        '(("en" . "ja") ("ja" . "en")))
   ;; ================================
   ;; THE END of dotspacemacs/user-config
   )

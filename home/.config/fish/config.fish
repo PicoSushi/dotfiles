@@ -1,3 +1,26 @@
+# ================
+# Set PATHes
+# ================
+
+# Pyenv
+if test -d $HOME/.pyenv
+    set -x PYENV_ROOT $HOME/.pyenv
+end
+
+# Golang
+set -x GOPATH $HOME
+set -x PATH $PATH $HOME/bin
+
+# Rust
+if test -d $HOME/.cargo/bin
+    set -x PATH $PATH $HOME/.cargo/bin
+end
+
+# iTerm2
+if test -f $HOME/.iterm2_shell_integration.(basename $SHELL)
+    source $HOME/.iterm2_shell_integration.(basename $SHELL)
+end
+
 function fish_prompt
     if type -q powerline-go
         ~/bin/powerline-go -max-width 0 -colorize-hostname -error $status -shell bare -modules aws,terraform-workspace,venv,user,host,ssh,cwd,perms,jobs,git,hg,exit -newline
@@ -37,15 +60,6 @@ end
 # gem bin
 set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
 
-# Golang
-set -x GOPATH $HOME
-set -x PATH $PATH $HOME/bin
-
-# Rust
-if test -d $HOME/.cargo/bin
-    set -x PATH $PATH $HOME/.cargo/bin
-end
-
 # fcitx
 if type -q fcitx
     export GTK_IM_MODULE=fcitx
@@ -60,3 +74,6 @@ end
 
 # opam configuration
 source /home/picosushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+# local config
+export TERM=xterm
