@@ -42,7 +42,7 @@ set -gx PAGER less
 if type -q bat
     set -gx PAGER bat
 end
-set -gx LESS --hilite-unread --ignore-case --jump-target=5 --LONG-PROMPT --RAW-CONTROL-CHARS
+set -gx LESS --HILITE-UNREAD --ignore-case --jump-target=5 --LONG-PROMPT --RAW-CONTROL-CHARS
 
 set -gx EDITOR nano
 if type -q jed
