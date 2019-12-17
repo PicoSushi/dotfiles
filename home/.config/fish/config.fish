@@ -17,8 +17,9 @@ if test -d $HOME/.cargo/bin
 end
 
 # iTerm2
-if test -f $HOME/.iterm2_shell_integration.(basename $SHELL)
-    source $HOME/.iterm2_shell_integration.(basename $SHELL)
+if test -f $HOME/.iterm2_shell_integration.fish
+    source $HOME/.iterm2_shell_integration.fish
+    export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 end
 
 function fish_prompt
@@ -41,6 +42,7 @@ set -gx PAGER less
 if type -q bat
     set -gx PAGER bat
 end
+set -gx LESS --hilite-unread --ignore-case --jump-target=5 --LONG-PROMPT --RAW-CONTROL-CHARS
 
 set -gx EDITOR nano
 if type -q jed
@@ -74,6 +76,3 @@ end
 
 # opam configuration
 source /home/picosushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
-# local config
-export TERM=xterm
