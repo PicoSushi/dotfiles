@@ -22,14 +22,6 @@ if test -f $HOME/.iterm2_shell_integration.fish
     export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 end
 
-function fish_prompt
-    if type -q powerline-go
-        ~/bin/powerline-go -max-width 0 -colorize-hostname -error $status -shell bare -modules aws,terraform-workspace,venv,user,host,ssh,cwd,perms,jobs,git,hg,exit -newline
-    else
-        echo [(whoami)@(hostname)](tput bold)(pwd)(tput sgr0)\n\>
-    end
-end
-
 # rename tmux window
 function window_rename --on-event fish_preexec
     if type -q tmux ; and test -n (echo $TERM | grep -e screen -e tmux) ;and test -n $argv[1]
@@ -61,6 +53,7 @@ end
 
 # gem bin
 set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
+set -gx GEM_ROOT (ruby -e 'print Gem.user_dir')
 
 # fcitx
 if type -q fcitx
