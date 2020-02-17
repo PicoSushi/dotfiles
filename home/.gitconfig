@@ -46,6 +46,10 @@
 	s   = status --short --branch
 	st  = status
 
+	sh  = stash
+	shs  = stash save
+	shp  = stash pop
+
 	sb  = show-branch
 	d   = diff
 
