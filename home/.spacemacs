@@ -49,6 +49,7 @@ This function should only modify configuration layer settings."
      ;; 3 Completion
      auto-completion
      helm
+     templates
 
      ;; 4 Distributions
 
