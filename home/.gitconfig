@@ -25,13 +25,9 @@
 [ghq]
 	root = ~/src
 
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-
 [alias]
 	b   = branch
 	ba  = branch --all
-
 
 	cm  = commit --verbose
 	cmm = commit --verbose --message
