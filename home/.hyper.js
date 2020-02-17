@@ -12,7 +12,7 @@ module.exports = {
     fontSize: 13,
 
     // font family with optional fallbacks
-    fontFamily: '"Ricty Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"mononoki Nerd Font Mono", "Ricty Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -137,6 +137,10 @@ module.exports = {
     // rendering (slower, but supports transparent backgrounds)
     webGLRenderer: true,
 
+    // Use Option key as Meta in macOS
+    modifierKeys: { altIsMeta: true },
+    summon: {hotkey: 'Ctrl+z'}
+
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
 
@@ -147,11 +151,15 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
     plugins: [
-        // 'hyperpower',
+        'hyperline',
         'hyperminimal',
-        'hyper-spotify',
-        // 'hyper-statusline',     // not work with spotify or byobu
-        'hyper-zenburn',
+        'hyperterm-summon',
+        'hyper-snazzy',
+        // 'hyperpower',
+    // 'hyper-spotify',
+    // 'hyper-statusline',     // not work with spotify or byobu
+    // 'hyper-zenburn',
+    // "hyper-dracula"
     ],
 
   // in development, you can create a directory under
