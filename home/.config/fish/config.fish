@@ -52,6 +52,11 @@ if type -q rbenv
     status --is-interactive; and source (rbenv init -|psub)
 end
 
+# asdf
+if type -q asdf
+    status --is-interactive; and source /usr/local/opt/asdf/asdf.fish
+end
+
 # gem bin
 set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
 set -gx GEM_ROOT (ruby -e 'print Gem.user_dir')
