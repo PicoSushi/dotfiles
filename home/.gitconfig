@@ -48,6 +48,7 @@
 
 	sb  = show-branch
 	d   = diff
+	push-force = push --force-with-lease
 
 [github]
 	user = picosushi
