@@ -1,7 +1,8 @@
 # ================
-# Others
+# direnv
 # ================
 .envrc
+.direnv
 
 # ================
 # Archives
@@ -68,6 +69,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pycodestyle
 
 # C extensions
 *.so
@@ -177,3 +179,5 @@ id_ed25519*
 # Editorconfig
 .editorconfig
 
+# Git Worktree
+.git-worktree
