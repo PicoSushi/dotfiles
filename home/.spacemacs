@@ -79,7 +79,8 @@ This function should only modify configuration layer settings."
      (go
       :variables
       godoc-at-point-function 'godoc-gogetdoc
-      ;; go-backend 'lsp
+      go-backend 'lsp
+      go-tab-width 4
       )
      graphviz
      haskell
