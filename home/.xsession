@@ -48,6 +48,10 @@ if [[ -x /usr/bin/dropbox ]]; then
     dropbox start
 fi
 
+if [[ -x /usr/bin/VBoxClient-all ]]; then
+    VBoxClient-all
+fi
+
 # Setup X
 feh --recursive --randomize --bg-fill $HOME/Pictures/Wallpapers/*
 exec awesome
