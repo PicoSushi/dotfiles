@@ -36,7 +36,7 @@ if type -q bat
     set -gx PAGER bat
     set -gx MANPAGER sh -c 'col -bx | bat -l man -p'
 end
-set -gx LESS --HILITE-UNREAD --ignore-case --jump-target=5 --LONG-PROMPT --RAW-CONTROL-CHARS
+set -gx LESS --HILITE-UNREAD --ignore-case --jump-target=5 --LONG-PROMPT --no-init --RAW-CONTROL-CHARS
 
 set -gx EDITOR nano
 if type -q jed
