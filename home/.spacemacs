@@ -109,7 +109,10 @@ This function should only modify configuration layer settings."
 
      ;; 14 Source control
      git
-     version-control
+     (version-control
+       :variables
+       version-control-diff-side 'left
+       )
 
      ;; 18 Tools
      docker
