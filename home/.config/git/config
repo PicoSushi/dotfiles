@@ -25,6 +25,10 @@
 	followTags = true
 [pull]
 	ff = only
+[rebase]
+	abbreviateCommands = true
+	autostash = true
+	autosquash = true
 
 [ghq]
 	root = ~/src
