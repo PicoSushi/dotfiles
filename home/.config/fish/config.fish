@@ -4,8 +4,7 @@
 
 # Pyenv
 if test -d $HOME/.pyenv
-    set -x PYENV_ROOT $HOME/.pyenv
-    pyenv init - | source
+    status is-interactive; and pyenv init --path | source
 end
 
 # Golang
