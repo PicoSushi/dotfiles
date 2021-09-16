@@ -136,8 +136,9 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
-                                      howm
                                       ddskk
+                                      editorconfig
+                                      howm
                                       toml-mode
                                       )
    ;; A list of packages that cannot be updated.
@@ -663,6 +664,7 @@ before packages are loaded."
   (fset 'yes-or-no-p 'y-or-n-p) ; y/n
   (setq tab-width 4)
   (setq-default show-trailing-whitespace t)
+  (global-whitespace-mode)
   (setq whitespace-style '(trailing tabs spaces tab-mark spaces-mark))
 
   ; (setq indent-tabs-mode nil)
