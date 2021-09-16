@@ -21,6 +21,10 @@ if ! pgrep xfce4-power-man ; then
     xfce4-power-manager &
 fi
 
+if [ -d ~/Pictures/Wallpapers ]; then
+    feh --randomize --bg-fill "${HOME}/Pictures/Wallpapers"
+fi
+
 # run xfsettingsd
 run nm-applet
 run light-locker
@@ -32,3 +36,6 @@ run pcmanfm --daemon-mode
 run thunar --daemon
 run pa-applet
 run pamac-tray
+
+run VBoxClient-all
+
