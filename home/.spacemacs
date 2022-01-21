@@ -642,6 +642,9 @@ before packages are loaded."
   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+  ;; skk
+  (global-set-key (kbd "C-<muhenkan>") 'skk-latin-mode)
+  (global-set-key (kbd "C-<henkan>") 'skk-mode)
 
   (auto-image-file-mode t)                ; 画像ファイルを表示
   (menu-bar-mode -1)                      ; メニューバーを消す
@@ -666,6 +669,17 @@ before packages are loaded."
   (setq-default show-trailing-whitespace t)
   (global-whitespace-mode)
   (setq whitespace-style '(trailing tabs spaces tab-mark spaces-mark))
+
+  (setq skk-egg-like-newline t)         ; ▼モードで RET をタイプしても確定のみ行い、改行しない。
+  (setq skk-status-indicator 'left)     ; SKKの状態を左端に表示する
+  (setq skk-keep-record t) ; 変換及び個人辞書に関する統計を ‘skk-record-file’ に取る
+  (if (file-exists-p "~/Dropbox/config/skk")
+      (progn
+        (setq skk-user-directory "~/Dropbox/config/skk")
+        ))
+
+  (cond ((file-readable-p "~/.emacs.d/private/local/skk.el")
+         (load "~/.emacs.d/private/local/skk.el")))
 
   ; (setq indent-tabs-mode nil)
   (setq ediff-window-setup-function 'ediff-setup-windows-plain) ; コントロール用のバッファを同一フレーム内に表示
