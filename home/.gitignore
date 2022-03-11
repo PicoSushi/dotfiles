@@ -182,3 +182,6 @@ id_ed25519*
 
 # Git Worktree
 .git-worktree
+
+# Pyre
+.pyre/
