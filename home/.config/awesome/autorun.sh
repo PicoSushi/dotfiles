@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 # run (only once) processes which spawn with the same name
 function run {
@@ -21,13 +22,13 @@ if ! pgrep xfce4-power-man ; then
     xfce4-power-manager &
 fi
 
-if [ -d ~/Pictures/Wallpapers ]; then
-    feh --randomize --bg-fill "${HOME}/Pictures/Wallpapers"
-fi
-
 # run xfsettingsd
 run nm-applet
-run light-locker
+run variety
+
+# run light-locker
+run xscreensaver --no-splash
+
 # run compton --shadow-exclude '!focused'
 run picom -b
 run pcmanfm --daemon-mode
@@ -38,4 +39,8 @@ run pa-applet
 run pamac-tray
 
 run VBoxClient-all
+
+if [ -d ~/Pictures/Wallpapers ]; then
+    feh --randomize --bg-fill "${HOME}/Pictures/Wallpapers"
+fi
 
