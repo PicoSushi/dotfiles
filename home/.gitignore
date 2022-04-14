@@ -177,11 +177,11 @@ id_ed25519*
 # VSCode
 .vscode
 
-# Editorconfig
-.editorconfig
-
 # Git Worktree
 .git-worktree
 
 # Pyre
 .pyre/
+
+# Terraform
+.terraform/
