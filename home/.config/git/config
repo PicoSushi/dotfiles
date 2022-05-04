@@ -82,3 +82,5 @@
 	required = true
 [credential]
 	helper = cache --timeout=300
+[init]
+	defaultBranch = main
