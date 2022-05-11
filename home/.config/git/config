@@ -1,7 +1,3 @@
-[core]
-	editor = $EDITOR
-	excludesfile = ~/.gitignore
-
 [includeIf "gitdir:~/src/github.com/PicoSushi"]
   # Add other accounts like this
   path = ~/src/github.com/PicoSushi/.gitconfig
