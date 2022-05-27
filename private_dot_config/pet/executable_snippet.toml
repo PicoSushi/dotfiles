@@ -1,0 +1,94 @@
+[[snippets]]
+  description = "make gitignore from not tracked and not ignored files"
+  command = "git status -s | grep -e \"^\\?\\?\" | cut -c 4- >> .gitignore"
+  output = ""
+
+[[snippets]]
+  description = "get wan ip address"
+  command = "dig +short myip.opendns.com @resolver1.opendns.com"
+  output = ""
+
+[[snippets]]
+  description = "rm already exited processes in docker"
+  command = "docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
+  tag = ["docker"]
+  output = ""
+
+[[snippets]]
+  description = "terraform show and plan for current workspace"
+  command = "terraform workspace show; terraform plan -var-file=\"secret.$(terraform workspace show).tfvars\""
+  tag = ["terraform"]
+  output = ""
+
+[[snippets]]
+  description = "terraform workspace select"
+  command = "terraform workspace select \"$(terraform workspace list | fzf | awk '{print $NF}')\""
+  tag = ["terraform"]
+  output = ""
+
+[[snippets]]
+  description = "git push new branch to origin"
+  command = "git push --set-upstream origin HEAD"
+  tag = ["git"]
+  output = ""
+
+[[snippets]]
+  description = "Change wallpaper at random"
+  command = "feh --randomize --bg-fill $HOME/Pictures/Wallpapers"
+  tag = ["wallpaper,background"]
+  output = ""
+
+[[snippets]]
+  description = "Run bash in latest docker container"
+  command = "docker exec -it \"$(docker ps --latest --quiet)\" bash"
+  output = ""
+
+[[snippets]]
+  description = "list log groups in aws cloudwatch"
+  command = "aws logs describe-log-groups | jq '.logGroups[].logGroupName' | sed 's/^\"//g' | sed 's/\"$//g'"
+  output = ""
+
+[[snippets]]
+  description = "list log streams with fuzzy selecting log groups, in aws cloudwatch"
+  command = "aws logs describe-log-streams --log-group-name \"$(aws logs describe-log-groups | jq '.logGroups[].logGroupName' | sed 's/^\"//g' | sed 's/\"$//g' | fzf)\""
+  output = ""
+
+[[snippets]]
+  description = "list all docker processes"
+  command = "docker ps --all --format \"table {{.ID}} {{.Command}}\\t{{.CreatedAt}}\\t{{.Status}}\\t{{.Ports}}\""
+  output = ""
+
+[[snippets]]
+  description = "fix date"
+  command = "sudo date --set @\"$(wget -q https://ntp-a1.nict.go.jp/cgi-bin/jst -O - | sed -n 4p | cut -d. -f1)\""
+  output = ""
+
+[[snippets]]
+  description = "Save and open screenshot"
+  command = "temp_date=$(strdatetime) ; mkdir -p ~/Pictures/Screenshots && import ~/Pictures/Screenshots/${temp_date}.png && xdg-open ~/Pictures/Screenshots/${temp_date}.png"
+  output = ""
+
+[[snippets]]
+  description = "Show logfile which name contains cwd."
+  command = "fd (basename (pwd))-\".*.log\" /var/tmp/ -X ls -1t | fzf --exit-0 | xargs bat -p"
+  output = ""
+
+[[snippets]]
+  description = "rakumo-pytest-here"
+  command = "./bin/pytest apps/ fasti/ | tee /var/tmp/(basename (pwd))-(git symbolic-ref --short HEAD | tr '/' '-')-(strdatetime).log; chmod a-w /var/tmp/(basename (pwd))*.log; afplay /System/Library/Sounds/Submarine.aiff"
+  output = ""
+
+[[snippets]]
+  description = "Show decorated hostname"
+  command = "toilet --gay --font pagga (hostname)"
+  output = ""
+
+[[snippets]]
+  description = "Follow docker logs"
+  command = "docker logs --follow (docker ps | fzf --header-lines 1 | awk '{print $1}')"
+  output = ""
+
+[[snippets]]
+  description = "List large packages by pacman"
+  command = "LC_ALL=C pacman -Qi | egrep '^(Name|Installed Size)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2"
+  output = ""

@@ -1,0 +1,82 @@
+[includeIf "gitdir:~/src/github.com/PicoSushi"]
+  # Add other accounts like this
+  path = ~/src/github.com/PicoSushi/.gitconfig
+
+[include]
+	path = ~/.gitconfig.local
+
+[color]
+	branch       = auto
+	decorate     = auto
+	diff         = auto
+	grep         = auto
+	interactive  = auto
+	# pager        = auto
+	showbranch   = auto
+	status       = auto
+	ui           = auto
+
+[push]
+	default = simple
+	followTags = true
+[pull]
+	ff = only
+[rebase]
+	abbreviateCommands = true
+	autostash = true
+	autosquash = true
+
+[ghq]
+	root = ~/src
+
+[alias]
+	b   = branch
+	ba  = branch --all
+
+	cm  = commit --verbose
+	cmm = commit --verbose --message
+
+	co  = checkout
+	com = checkout master
+
+	chp = cherry-pick
+
+	fap = fetch --all --prune
+
+	s   = status --short --branch
+	st  = status
+
+	sh  = stash
+	shs  = stash save
+	shp  = stash pop
+
+	sb  = show-branch
+	d   = diff
+	push-force = push --force-with-lease
+
+[github]
+	user = picosushi
+
+[diff]
+  tool = meld
+[difftool "meld"]
+  cmd = meld $LOCAL $REMOTE
+[merge]
+	tool = meld
+[mergetool "meld"]
+	cmd = meld $LOCAL $BASE $REMOTE --auto-merge --output $MERGED
+[magithub]
+	online = false
+[magithub "status"]
+	includeStatusHeader = false
+	includePullRequestsSection = false
+	includeIssuesSection = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = cache --timeout=300
+[init]
+	defaultBranch = main

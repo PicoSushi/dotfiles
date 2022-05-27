@@ -1,0 +1,22 @@
+[General]
+  snippetfile = "/home/picosushi/.config/pet/snippet.toml"
+  editor = "nano"
+  column = 40
+  selectcmd = "fzf"
+  backend = "gist"
+  sortby = ""
+
+[Gist]
+  file_name = "pet-snippet.toml"
+  access_token = "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"
+  gist_id = "8cd88e786556b50e122d923772456c7a"
+  public = false
+  auto_sync = false
+
+[GitLab]
+  file_name = "pet-snippet.toml"
+  access_token = ""
+  url = ""
+  id = ""
+  visibility = "private"
+  auto_sync = false

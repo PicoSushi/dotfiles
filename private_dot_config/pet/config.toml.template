@@ -1,0 +1,13 @@
+[General]
+  snippetfile = "$HOME/.config/pet/snippet.toml"
+  editor = "$EDITOR"
+  column = 40
+  selectcmd = "fzf"
+  backend = "gist"
+
+[Gist]
+  file_name = "pet-snippet.toml"
+  access_token = ""
+  gist_id = ""
+  public = false
+  auto_sync = true
