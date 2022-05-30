@@ -39,62 +39,77 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; See also: https://develop.spacemacs.org/layers/LAYERS.html
-     ;; 1 Chats
-     ; slack
 
-     ;; 2 Checkers
+     ;; 2. Chats
+     ; slack
+     ;; 3. Checkers
      ; spell-checking
      syntax-checking
-
-     ;; 3 Completion
+     ;; 4. Completion
      auto-completion
      helm
      templates
-
-     ;; 4 Distributions
-
-     ;; 5 Emacs
+     ;; 5. E-mail
+     ;; 6. Emacs
      better-defaults
+     helpful
      ibuffer
-
-     ;; 6 E-mail
-
-     ;; 7 Frameworks
-     django
-
-     ;; 8 Fun
+     outshine
+     ;; 7. File trees
+      treemacs  ; 2022-05-30
+     ; neotree
+     ;; 8. Fonts
+     unicode-fonts
+     ;; 9. Fun
      emoji
      games
-     selectric
      xkcd
-
-     ;; 9 International support
-
-     ;; 10 Programming and markup languages
+     ;; 10. Internationalization
+     japanese
+     ;; 11. Miscellaneous
+     multiple-cursors
+     nav-flash
+     ;; spacemacs-completion
+     ;; spacemacs-defaults
+     ;; spacemacs-editing
+     ;; spacemacs-editing-visual
+     ;; spacemacs-modeline
+     ;; 12. Music
+     ;; 13. Operating systems
+     ;; 14. Pair programming
+     ;; 15. Programming languages
+     ;; 15.1. Domain-specific (DSLs)
+     ;; 15.1.1 Lisp dialects
+     emacs-lisp
+     ;; 15.1.2. Markup & configuration
      asciidoc
      csv
+     graphviz
+     html
+     json
+     latex
+     markdown
+     yaml
+     ;; 15.1.3. Scripting
+     shell-scripts
+     ;; 15.1.15. SQL
+     sql
+     ;; 15.2. Frameworks
+     django
+     react
+     ;; 15.3. General-purpose
+     javascript
+     typescript
      c-c++
-     csv
-     emacs-lisp
      (go
       :variables
       godoc-at-point-function 'godoc-gogetdoc
       go-backend 'lsp
       go-tab-width 4
       )
-     graphviz
-     haskell
-     html
-     ipython-notebook
-     javascript
-     latex
      lua
-     markdown
-     php
      (python
       :variables
-      python-test-runner 'pytest
-      python-enable-yapf-format-on-save t
       python-backend 'lsp
       python-lsp-server 'pyright
       )
@@ -103,30 +118,31 @@ This function should only modify configuration layer settings."
       :variables
       rust-format-on-save t
       )
-     shell-scripts
-     sql
-     typescript
-     yaml
-
-
-     ;; 14 Source control
+     ;; 15.4. Utilities
+     ipython-notebook
+     ;; 16. Readers
+     ;; 17. README.org files that need proper tags
+     ;; 18. Source control
      git
      (version-control
-       :variables
-       version-control-diff-side 'left
-       )
-
-     ;; 18 Tools
+      :variables
+      version-control-diff-side 'left
+      )
+     ;; 19. Spacemacs
+     ;; 20. Tagging
+     ;; 21. Themes
+     colors
+     ;; 22. Tools
      docker
+     eww
+     kubernetes
+     lsp
      nginx
      systemd
      terraform
-
-     ;; 20 Web services
-     lsp
-
-     multiple-cursors
-     treemacs
+     ;; 23. Vim
+     ;; 24. Web services
+     ;; twitter ; dead
      )
 
    ;; List of additional packages that will be installed without being wrapped
@@ -708,7 +724,9 @@ before packages are loaded."
   (setq x-select-enable-clipboard-manager nil)
 
   ;; treemacs
-  (treemacs-resize-icons 9)
+  ; (treemacs-resize-icons 9)
+  ;; neotree
+  ; ()
 
   ;; modelineに色を
   (set-face-attribute 'mode-line nil
@@ -748,3 +766,22 @@ before packages are loaded."
   ;; ================================
   ;; THE END of dotspacemacs/user-config
   )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(twittering-mode texfrag rjsx-mode rainbow-mode rainbow-identifiers kubernetes-tramp kubernetes-evil kubernetes magit-popup color-identifiers-mode unicode-fonts ucs-utils font-utils persistent-soft pcache pangu-spacing outshine outorg orgit-forge orgit org-rich-yank org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-contrib org-cliplink neotree nav-flash japanese-holidays helpful elisp-refs helm-org-rifle gnuplot evil-tutor-ja evil-org avy-migemo migemo evil-tex code-cells zenburn-theme yatemplate yasnippet-snippets yapfify xkcd ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unkillable-scratch unfill undo-tree typit treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toml-mode toc-org tide tagedit systemd symon symbol-overlay sudoku string-inflection string-edit sql-indent sphinx-doc spaceline-all-the-icons smeargle slim-mode selectric-mode seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode ron-mode robe restart-emacs rbenv rake rainbow-delimiters racer quickrun pytest pyenv-mode pydoc py-isort pug-mode prettier-js popwin pony-mode poetry pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persistent-scratch password-generator paradox pacmacs overseer org-superstar open-junk-file npm-mode nose nodejs-repl nginx-mode nameless mwim multi-line monokai-theme mmm-mode minitest markdown-toc macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-latex lsp-haskell lorem-ipsum livid-mode live-py-mode link-hint json-reformat json-navigator js2-refactor js-doc journalctl-mode inspector insert-shebang info+ indent-guide importmagic impatient-mode ibuffer-projectile hybrid-mode hungry-delete howm hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-hoogle helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets graphviz-dot-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe gh-md gendoxy geben fuzzy forge font-lock+ flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flycheck-bashate flx-ido fish-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-terminal-cursor-changer evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav elisp-def ein editorconfig dumb-jump drupal-mode drag-stuff dotenv-mode dockerfile-mode docker-compose-mode docker disaster dired-quick-sort diminish devdocs define-word ddskk dap-mode dante cython-mode csv-mode cpp-auto-include company-ycmd company-web company-terraform company-shell company-rtags company-reftex company-phpactor company-php company-math company-lua company-go company-emoji company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode cmm-mode clean-aindent-mode chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk attrap aggressive-indent adoc-mode ace-link ace-jump-helm-line ac-ispell 2048-game)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
+)
