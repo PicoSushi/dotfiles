@@ -724,9 +724,7 @@ before packages are loaded."
   (setq x-select-enable-clipboard-manager nil)
 
   ;; treemacs
-  ; (treemacs-resize-icons 9)
-  ;; neotree
-  ; ()
+  (treemacs-resize-icons 9)
 
   ;; modelineに色を
   (set-face-attribute 'mode-line nil
