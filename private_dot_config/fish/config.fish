@@ -62,16 +62,14 @@ end
 set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
 set -gx GEM_ROOT (ruby -e 'print Gem.user_dir')
 
-# fcitx
-if type -q fcitx
-    export GTK_IM_MODULE=fcitx
-    export XMODIFIERS=@im=fcitx
-    export QT_IM_MODULE=fcitx
-end
-
 # fuck
 if type -q thefuck
     thefuck --alias | source
+end
+
+# zoxide
+if type -q zoxide
+    zoxide init fish | source
 end
 
 # opam configuration
