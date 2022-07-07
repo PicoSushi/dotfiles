@@ -67,6 +67,11 @@ if type -q thefuck
     thefuck --alias | source
 end
 
+# starship
+if type -q starship
+    starship init fish | source
+end
+
 # zoxide
 if type -q zoxide
     zoxide init fish | source
