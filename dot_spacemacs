@@ -331,7 +331,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -667,8 +667,8 @@ before packages are loaded."
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
   ;; skk
-  (global-set-key (kbd "C-<muhenkan>") 'skk-latin-mode)
-  (global-set-key (kbd "C-<henkan>") 'skk-mode)
+  (global-set-key (kbd "<muhenkan>") 'skk-latin-mode)
+  (global-set-key (kbd "<henkan>") 'skk-mode)
 
   (auto-image-file-mode t)                ; 画像ファイルを表示
   (menu-bar-mode -1)                      ; メニューバーを消す
