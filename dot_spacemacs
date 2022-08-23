@@ -331,7 +331,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1)
+   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -572,7 +572,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil - same as frame-title-format)
    dotspacemacs-icon-title-format nil
 
-   ;; Show trailing whitespace (default t)
+   ;; Color highlight trailing whitespace in all prog-mode and text-mode derived
+   ;; modes such as c++-mode, python-mode, emacs-lisp, html-mode, rst-mode etc.
+   ;; (default t)
    dotspacemacs-show-trailing-whitespace t
 
    ;; Delete whitespace while saving buffer. Possible values are `all'
@@ -668,7 +670,9 @@ before packages are loaded."
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
   ;; skk
   (global-set-key (kbd "<muhenkan>") 'skk-latin-mode)
+  (global-set-key (kbd "C-,") 'skk-latin-mode)
   (global-set-key (kbd "<henkan>") 'skk-mode)
+  (global-set-key (kbd "C-.") 'skk-mode)
 
   (auto-image-file-mode t)                ; 画像ファイルを表示
   (menu-bar-mode -1)                      ; メニューバーを消す
@@ -694,9 +698,12 @@ before packages are loaded."
   (global-whitespace-mode)
   (setq whitespace-style '(trailing tabs spaces tab-mark spaces-mark))
 
+  ;; skk
   (setq skk-egg-like-newline t)         ; ▼モードで RET をタイプしても確定のみ行い、改行しない。
   (setq skk-status-indicator 'left)     ; SKKの状態を左端に表示する
+  (setq skk-show-mode-show t)           ; カーソル付近に skk-*-mode-string を表示する。
   (setq skk-keep-record t) ; 変換及び個人辞書に関する統計を ‘skk-record-file’ に取る
+  (setq skk-use-act t)
   (if (file-exists-p "~/Dropbox/config/skk")
       (progn
         (setq skk-user-directory "~/Dropbox/config/skk")
