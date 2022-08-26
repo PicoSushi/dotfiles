@@ -127,6 +127,7 @@ This function should only modify configuration layer settings."
 
      multiple-cursors
      treemacs
+     twitter
      )
 
    ;; List of additional packages that will be installed without being wrapped
@@ -673,6 +674,8 @@ before packages are loaded."
   (global-set-key (kbd "C-,") 'skk-latin-mode)
   (global-set-key (kbd "<henkan>") 'skk-mode)
   (global-set-key (kbd "C-.") 'skk-mode)
+  ;; twitter
+  (global-set-key (kbd "C-c t") 'twittering-update-status-interactive)
 
   (auto-image-file-mode t)                ; 画像ファイルを表示
   (menu-bar-mode -1)                      ; メニューバーを消す
@@ -754,6 +757,9 @@ before packages are loaded."
   (setq lsp-pyls-plugins-pycodestyle-ignore '("W191" "E101" "E117" "E123" "E126" "W504" "W605" "W606"))
   (setq lsp-pyls-plugins-pycodestyle-max-line-length 99)
   (setq lsp-pyls-plugins-pyflakes-enabled nil)
+
+  ;; twitter
+  (setq twittering-allow-insecure-server-cert t)
 
   ;; wakatime
   ;; need to make symlink at Dropbox install
