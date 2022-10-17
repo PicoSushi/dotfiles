@@ -86,7 +86,7 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [gcloud]
-format = ' $symbol [$account(@$domain)(\($region\))]($style)'
+format = ' $symbol [$project(\($region\))]($style)'
 symbol = ""
 style = "fg:#9F7E00 bg:#3F3F3F"
 

@@ -54,6 +54,8 @@
 	d   = diff
 	push-force = push --force-with-lease
 
+	root = rev-parse --show-toplevel
+
 [github]
 	user = picosushi
 

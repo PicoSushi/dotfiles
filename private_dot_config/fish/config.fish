@@ -4,7 +4,6 @@
 
 # Pyenv
 if test -d $HOME/.pyenv
-    status is-interactive; and pyenv init --path | source
     pyenv init - | source
 end
 
@@ -59,7 +58,7 @@ if type -q asdf
 end
 
 # gem bin
-set -gx PATH (gem environment | egrep "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
+set -gx PATH (gem environment | grep -E "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
 set -gx GEM_ROOT (ruby -e 'print Gem.user_dir')
 
 # fuck
