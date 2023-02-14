@@ -39,36 +39,39 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; See also: https://develop.spacemacs.org/layers/LAYERS.html
-     ;; 1 Chats
+     ;; 1. Chats
      ; slack
 
-     ;; 2 Checkers
+     ;; 2. Checkers
      ; spell-checking
      syntax-checking
 
-     ;; 3 Completion
+     ;; 3. Completion
      auto-completion
      helm
      templates
 
-     ;; 4 Distributions
+     ;; 4. E-mail
 
-     ;; 5 Emacs
+     ;; 5. Emacs
      better-defaults
+     helpful
      ibuffer
+     tabs
 
-     ;; 6 E-mail
+     ;; 6. File trees
+     neotree
 
-     ;; 7 Frameworks
-     django
+     ;; 7. Fonts
 
      ;; 8 Fun
      emoji
-     games
-     selectric
+     ; games
+     ; selectric
      xkcd
 
      ;; 9 International support
+     japanese
 
      ;; 10 Programming and markup languages
      asciidoc
@@ -109,25 +112,29 @@ This function should only modify configuration layer settings."
      yaml
 
 
-     ;; 14 Source control
+     ;; 14. Source control
      git
      (version-control
        :variables
        version-control-diff-side 'left
        )
 
-     ;; 18 Tools
+     ;; 18. Tools
      docker
      nginx
      systemd
      terraform
 
-     ;; 20 Web services
+     ;; 24. Web services
      lsp
+     twitter
+     (wakatime
+      :variables
+      wakatime-api-key ""               ; https://wakatime.com/settings/api-key
+      wakatime-cli-path ""              ; (whereis wakatime)
+      )
 
      multiple-cursors
-     treemacs
-     twitter
      protobuf
      )
 
@@ -768,11 +775,6 @@ before packages are loaded."
 
   ;; twitter
   (setq twittering-allow-insecure-server-cert t)
-
-  ;; wakatime
-  ;; need to make symlink at Dropbox install
-  ;; (cond ((file-readable-p "~/.wakatime.cfg")
-  ;;        (global-wakatime-mode)))
   ;; ================================
   ;; THE END of dotspacemacs/user-config
   )

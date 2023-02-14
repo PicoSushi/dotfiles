@@ -1,7 +1,5 @@
 [global_config]
   borderless = True
-  title_transmit_fg_color = "#8faf9f"
-  title_transmit_bg_color = "#3f3f3f"
   enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
 [keybindings]
   help = ""
@@ -11,8 +9,7 @@
     background_color = "#282828"
     background_darkness = 0.8
     background_type = transparent
-    cursor_color = "#ffffff"
-    font = Ricty Nerd Font 12
+    font = NotoSansMono Nerd Font 12
     foreground_color = "#ebdbb2"
     show_titlebar = False
     scrollback_lines = 5000
@@ -23,7 +20,6 @@
     background_color = "#002b36"
     background_darkness = 0.8
     background_type = transparent
-    cursor_color = "#aaaaaa"
     font = Ricty Nerd Font 10
     foreground_color = "#839496"
     show_titlebar = False
