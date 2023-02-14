@@ -78,3 +78,8 @@ end
 
 # opam configuration
 source /home/picosushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+# pnpm
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
