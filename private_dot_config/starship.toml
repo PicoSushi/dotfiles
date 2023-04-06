@@ -176,3 +176,6 @@ format = '\[[$symbol$workspace]($style)\]'
 
 [vagrant]
 format = '\[[$symbol($version)]($style)\]'
+
+[status]
+disabled = false
