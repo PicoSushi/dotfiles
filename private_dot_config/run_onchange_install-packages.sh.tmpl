@@ -1,0 +1,29 @@
+#!/bin/bash
+{{ if eq .chezmoi.osRelease.id "endeavouros" }}
+yay -S --needed \
+    bat \
+    dmidecode \
+    git-delta \
+    docker \
+    dog \
+    dust \
+    fish \
+    ghq-bin \
+    js-beautify \
+    mupdf \
+    neofetch \
+    onefetch \
+    paru \
+    pet-bin \
+    prettier \
+    pyright \
+    rust \
+    shellcheck \
+    terraform \
+    tig \
+    toilet \
+    toilet-fonts \
+    tokei \
+    tree
+{{ else }}
+{{ end }}
