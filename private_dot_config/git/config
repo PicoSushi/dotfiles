@@ -1,85 +1,115 @@
 [includeIf "gitdir:~/src/github.com/PicoSushi/"]
-  # Add other accounts like this
-  path = ~/src/github.com/PicoSushi/.gitconfig
+    # Add other accounts like this
+    path = ~/src/github.com/PicoSushi/.gitconfig
+
+[core]
+    pager = delta
 
 [include]
-	path = ~/.gitconfig.local
+    path = ~/.gitconfig.local
 
 [color]
-	branch       = auto
-	decorate     = auto
-	diff         = auto
-	grep         = auto
-	interactive  = auto
-	# pager        = auto
-	showbranch   = auto
-	status       = auto
-	ui           = auto
+    branch       = auto
+    decorate     = auto
+    diff         = auto
+    grep         = auto
+    interactive  = auto
+    # pager        = auto
+    showbranch   = auto
+    status       = auto
+    ui           = auto
 
 [push]
-	default = simple
-	followTags = true
+    default = simple
+    followTags = true
 [pull]
-	ff = only
+    ff = only
+    rebase = false
 [rebase]
-	abbreviateCommands = true
-	autostash = true
-	autosquash = true
+    abbreviateCommands = true
+    autostash = true
+    autosquash = true
 
 [ghq]
-	root = ~/src
+    root = ~/src
 
 [alias]
-  afk = "! git add -A && git commit -m '[DNM][WIP] afk -- pushing this commit for avoiding code loss, this commit must be deleted later' && git push"
-	b   = branch
-	ba  = branch --all
+    afk = "! git add -A && git commit -m '[DNM][WIP] afk -- pushing this commit for avoiding code loss, this commit must be deleted later' && git push"
+    b   = branch
+    ba  = branch --all
 
-	cm  = commit --verbose
-	cmm = commit --verbose --message
+    cm  = commit --verbose
+    cmm = commit --verbose --message
 
-	co  = checkout
-	com = checkout master
+    co  = checkout
+    com = checkout master
 
-	chp = cherry-pick
+    chp = cherry-pick
 
-	fap = fetch --all --prune
+    fap = fetch --all --prune
 
-	s   = status --short --branch
-	st  = status
+    s   = status --short --branch
+    st  = status
 
-	sh  = stash
-	shs  = stash save
-	shp  = stash pop
+    sh  = stash
+    shs  = stash save
+    shp  = stash pop
 
-	sb  = show-branch
-	d   = diff
-	push-force = push --force-with-lease
+    sb  = show-branch
+    d   = diff
+    push-force = push --force-with-lease
 
-	root = rev-parse --show-toplevel
+    root = rev-parse --show-toplevel
 
 [github]
-	user = picosushi
+    user = picosushi
 
 [diff]
-  tool = meld
+    tool = meld
 [difftool "meld"]
-  cmd = meld $LOCAL $REMOTE
+    cmd = meld $LOCAL $REMOTE
+
 [merge]
-	tool = meld
+    tool = meld
 [mergetool "meld"]
-	cmd = meld $LOCAL $BASE $REMOTE --auto-merge --output $MERGED
+    cmd = meld $LOCAL $BASE $REMOTE --auto-merge --output $MERGED
+
 [magithub]
-	online = false
+    online = false
 [magithub "status"]
-	includeStatusHeader = false
-	includePullRequestsSection = false
-	includeIssuesSection = false
+    includeStatusHeader = false
+    includePullRequestsSection = false
+    includeIssuesSection = false
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
 [credential]
-	helper = cache --timeout=300
+    helper = cache --timeout=300
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+
+[advice]
+    diverging = false
