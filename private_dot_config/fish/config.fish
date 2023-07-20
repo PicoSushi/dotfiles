@@ -58,8 +58,10 @@ if type -q asdf
 end
 
 # gem bin
-set -gx PATH (gem environment | grep -E "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
-set -gx GEM_ROOT (ruby -e 'print Gem.user_dir')
+if type -q gem
+    set -gx PATH (gem environment | grep -E "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
+    set -gx GEM_ROOT (ruby -e 'print Gem.user_dir')
+end
 
 # fuck
 if type -q thefuck
