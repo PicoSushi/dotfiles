@@ -315,18 +315,21 @@ assign [class="(?i)firefox"] $ws2
 # 3. Terminal
 assign [class="Xfce4-terminal"] $ws3
 assign [class="Terminator"] $ws3
+assign [class="Alacritty"] $ws3
+
 # 4. Filer
 assign [class="Thunar"] $ws3
 assign [class="Thunderbird"] $ws4
+
 # 5.Chat
 assign [class="Slack"] $ws5
 assign [class="TelegramDesktop"] $ws5
 
 # automatic set focus new window if it opens on another workspace then the current:
-for_window [class=Emacs] focus
+#for_window [class=Emacs] focus
 for_window [class=(?i)firefox] focus
-for_window [class=Xfce4-terminal] focus
-for_window [class=Terminator] focus
+#for_window [class=Xfce4-terminal] focus
+#for_window [class=Terminator] focus
 for_window [class=Thunar] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
@@ -392,7 +395,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id sleep 1 && feh --bg-fill --randomize /usr/share/endeavouros/backgrounds/eos_wallpapers_classic/* /usr/share/endeavouros/backgrounds/eos_wallpapers_community/* $HOME/Pictures/Wallpapers/*
 
 # set powersavings for display:
 # exec --no-startup-id xset s 480 dpms 600 600 600
@@ -403,7 +406,6 @@ exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds
 # use xautolock to use autosuspend rules for mobile devices
 # https://wiki.archlinux.org/title/Session_lock#xautolock
 #exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
-
 
 # xscreensaver
 # https://www.jwz.org/xscreensaver
@@ -420,10 +422,12 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 #exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
-exec --no-startup-id sleep 2 && terminator
-exec --no-startup-id sleep 3 && variety
+# exec --no-startup-id sleep 2 && terminator
+exec --no-startup-id sleep 2 && alacritty
+# exec --no-startup-id sleep 4 && thunar
+# exec --no-startup-id sleep 3 && variety
 # exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
-exec --no-startup-id sleep 4 && thunar
+exec --no-startup-id sleep 10 && emacs
 
 ###############
 # system tray #
