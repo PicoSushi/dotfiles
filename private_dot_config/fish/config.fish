@@ -38,8 +38,8 @@ end
 set -gx LESS --HILITE-UNREAD --ignore-case --jump-target=5 --LONG-PROMPT --no-init --RAW-CONTROL-CHARS
 
 set -gx EDITOR nano
-if type -q jed
-    set -gx EDITOR jed
+if type -q helix
+    set -gx EDITOR helix
 end
 
 # direnv
