@@ -1,3 +1,7 @@
+if not set --query fish_private_mode
+    history merge
+end
+
 # ================
 # Set PATHes
 # ================
