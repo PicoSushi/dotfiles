@@ -26,6 +26,19 @@ if test -f $HOME/.iterm2_shell_integration.fish
     export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 end
 
+# opam
+if test -f $HOME/.opam/opam-init/init.fish
+    source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+end
+
+# pnpm
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+
+if test -f /opt/google-cloud-cli/path.fish.inc
+    source /opt/google-cloud-cli/path.fish.inc
+end
+
 # rename tmux window
 function window_rename --on-event fish_preexec
     if type -q tmux ;and set -q TMUX ;and test -n $argv[1]
@@ -81,11 +94,3 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
-
-# opam configuration
-source /home/picosushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
-# pnpm
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
-# pnpm end
