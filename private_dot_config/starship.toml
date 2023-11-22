@@ -1,6 +1,6 @@
 # Global fg color: #DCDCCC, bg: #3F3F3F
 
-format = "[$username$hostname$all](bg:#3F3F3F)"
+format = "[ $username$hostname$container ](bg:#289C58)[ ](fg:#289C58 bg:#3F3F3F)[$all](bg:#3F3F3F)"
 add_newline = true
 
 [directory]
@@ -30,12 +30,14 @@ disabled = false
 show_always = true
 
 [hostname]
-format = '[@$ssh_symbol$hostname]($style)[ ](fg:#289C58 bg:#3F3F3F)'
+format = '[@$hostname$ssh_symbol]($style)'
 
 style = "bold fg:#DCDCCC bg:#289C58"                      # change by hostname, later
 ssh_only = false
 
-
+[container]
+style = 'bold fg:DCDCCC bg:#9A348E'
+symbol = ''
 
 [cmd_duration]
 format = '\[[⏱ $duration]($style)\]'
@@ -46,8 +48,10 @@ time_format = "%R" # Hour:Minute
 # style = "bg:#33658A"
 format = '[[ $time ](bg:#33658A)]($style)'
 
-
+# ================
 # Languages
+# ================
+
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
@@ -72,6 +76,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [docker_context]
 format = '\[[$symbol$context]($style)\]'
+symbol = '🐳 '
 
 [dotnet]
 format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
@@ -92,13 +97,13 @@ style = "fg:#9F7E00 bg:#3F3F3F"
 
 
 [git_branch]
-format = '[ ](fg:#F1502F bg:#3F3F3F)[$symbol$branch]($style)'
+format = '[ ](fg:#316DCA bg:#3F3F3F)[$symbol$branch]($style)'
 # format = '[@$ssh_symbol$hostname]($style)[ ](bold fg:#289C58 bg:#DA627D)'
-style = "bold fg:#DCDCCC bg:#F1502F"
+style = "bold fg:#539BF5 bg:#316DCA"
 
 [git_status]
-format = '[  \[$all_status$ahead_behind\]]($style)[ ](fg:#F1502F bg:#3F3F3F)'
-style = "bold fg:#DCDCCC bg:#F1502F"
+format = '[ 󰇘 \[$all_status$ahead_behind\]]($style)[ ](fg:#316DCA bg:#3F3F3F)'
+style = "bold fg:#539BF5 bg:#316DCA"
 
 [golang]
 format = '\[[$symbol($version)]($style)\]'
