@@ -99,11 +99,11 @@ style = "fg:#9F7E00 bg:#3F3F3F"
 [git_branch]
 format = '[ ](fg:#316DCA bg:#3F3F3F)[$symbol$branch]($style)'
 # format = '[@$ssh_symbol$hostname]($style)[ ](bold fg:#289C58 bg:#DA627D)'
-style = "bold fg:#539BF5 bg:#316DCA"
+style = "fg:#DCDCCC bg:#316DCA"
 
 [git_status]
 format = '[ 󰇘 \[$all_status$ahead_behind\]]($style)[ ](fg:#316DCA bg:#3F3F3F)'
-style = "bold fg:#539BF5 bg:#316DCA"
+style = "fg:#DCDCCC bg:#316DCA"
 
 [golang]
 format = '\[[$symbol($version)]($style)\]'
