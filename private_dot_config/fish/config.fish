@@ -8,6 +8,7 @@ end
 
 # Pyenv
 if test -d $HOME/.pyenv
+    set -x PATH $PATH $HOME/.pyenv/bin
     pyenv init - | source
 end
 
