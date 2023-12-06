@@ -102,8 +102,18 @@ format = '[ ](fg:#316DCA bg:#3F3F3F)[$symbol$branch]($style)'
 style = "fg:#DCDCCC bg:#316DCA"
 
 [git_status]
-format = '[ 󰇘 \[$all_status$ahead_behind\]]($style)[ ](fg:#316DCA bg:#3F3F3F)'
+format = '[󰇘\[$all_status$ahead_behind\]]($style)[](fg:#316DCA bg:#3F3F3F)'
 style = "fg:#DCDCCC bg:#316DCA"
+
+[git_state]
+style = "fg:#DCDCCC bg:#316DCA"
+format = '[:$state( $progress_current/$progress_total)]($style)'
+cherry_pick = "🍒"
+rebase = "🔀"
+merge = "🐟"
+
+[git_metrics]
+# disabled = false
 
 [golang]
 format = '\[[$symbol($version)]($style)\]'
