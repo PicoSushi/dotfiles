@@ -35,29 +35,28 @@
 
 [alias]
     afk = "! git add -A && git commit -m '[DNM][WIP] afk -- pushing this commit for avoiding code loss, this commit must be deleted later' && git push"
+
     b   = branch
     ba  = branch --all
 
     cm  = commit --verbose
     cmm = commit --verbose --message
 
-    co  = checkout
-    com = checkout master
+    chp  = cherry-pick
 
-    chp = cherry-pick
+    fap  = fetch --all --prune
 
-    fap = fetch --all --prune
+    s    = status --short --branch
+    st   = status
 
-    s   = status --short --branch
-    st  = status
-
-    sh  = stash
+    sh   = stash
     shs  = stash save
     shp  = stash pop
 
+
     sb  = show-branch
     d   = diff
-    push-force = push --force-with-lease
+    force-push = push --force-with-lease
 
     root = rev-parse --show-toplevel
 
