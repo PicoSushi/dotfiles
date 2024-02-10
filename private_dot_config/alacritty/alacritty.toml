@@ -1,0 +1,18 @@
+[font]
+size = 14.0
+
+[font.bold]
+family = "NotoSansM NF"
+
+[font.bold_italic]
+family = "NotoSansM NF"
+
+[font.italic]
+family = "NotoSansM NF"
+
+[font.normal]
+family = "NotoSansM NF"
+
+[window]
+decorations = "full"
+opacity = 0.8
