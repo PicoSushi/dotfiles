@@ -2,16 +2,16 @@
 size = 14.0
 
 [font.bold]
-family = "NotoSansM NF"
+family = "NotoMono Nerd Font"
 
 [font.bold_italic]
-family = "NotoSansM NF"
+family = "NotoMono Nerd Font"
 
 [font.italic]
-family = "NotoSansM NF"
+family = "NotoMono Nerd Font"
 
 [font.normal]
-family = "NotoSansM NF"
+family = "NotoMono Nerd Font"
 
 [window]
 decorations = "full"
