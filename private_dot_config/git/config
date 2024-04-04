@@ -3,7 +3,8 @@
     path = ~/src/github.com/PicoSushi/.gitconfig
 
 [core]
-    pager = delta
+    pager = delta --dark
+
 
 [include]
     path = ~/.gitconfig.local
@@ -93,10 +94,12 @@
     defaultBranch = main
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only --dark --features=interactive
 
 [delta]
+    true-color = always
     features = decorations
+    syntax-theme = Dracula
 
 [delta "interactive"]
     keep-plus-minus-markers = false
