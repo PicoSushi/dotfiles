@@ -6,6 +6,10 @@ end
 # Set PATHes
 # ================
 
+if test -d $HOME/.local/bin
+    set -x PATH $PATH $HOME/.local/bin
+end
+
 # Pyenv
 if test -d $HOME/.pyenv
     set -x PATH $PATH $HOME/.pyenv/bin
@@ -51,8 +55,7 @@ end
 set -gx PAGER less
 if type -q bat
     set -gx PAGER bat
-    # set -gx MANPAGER sh -c 'col -bx | bat -l man -p'  # This made output like: 4mMAN24m(1)
-    set -gx MANPAGER "sh -c 'bat -l man -p'"
+    set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
 set -gx LESS --HILITE-UNREAD --ignore-case --jump-target=5 --LONG-PROMPT --no-init --RAW-CONTROL-CHARS
 
@@ -90,6 +93,11 @@ end
 # starship
 if type -q starship
     starship init fish | source
+end
+
+# zellij
+if type -q zellij
+    status --is-interactive; and eval (zellij setup --generate-auto-start fish | string collect)
 end
 
 # zoxide
