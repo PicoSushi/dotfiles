@@ -16,17 +16,7 @@ function fish_greeting
 
     # The greeting used to be skipped when fish_greeting was empty (not just undefined)
     # Keep it that way to not print superfluous newlines on old configuration
-
-    set -g saycmd 'echo'
-    if type -q ponysay
-        set -g saycmd 'ponysay'
-    else if type -q cowsay
-        set -g saycmd 'cowsay'
-    end
-
-    if type -q cure
-        $saycmd (cure echo --quick --precure=(cure precures | cure tr '[:precure_name:]' '[:girl_name:]' | shuf -n 1))
-    else
-        $saycmd $fish_greeting
-    end
+    echo "🐳🐬🐠🐟🦈🐙🦀🐚🌊🏰
+🎟️🚶‍♂️🚶‍♀️👨‍👩‍👧‍👦🔍🤿📸🤳🛍️🍔
+🚗🚌🚃🌉🌇🌆🌅🎡🎆🌠"
 end
