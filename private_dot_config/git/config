@@ -23,6 +23,7 @@
 [push]
     default = simple
     followTags = true
+    autoSetupRemote = true
 [pull]
     ff = only
     rebase = false
@@ -115,3 +116,5 @@
 
 [advice]
     diverging = false
+[rerere]
+	enabled = true
