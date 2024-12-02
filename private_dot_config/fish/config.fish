@@ -79,6 +79,11 @@ if type -q asdf
     status --is-interactive; and source /usr/local/opt/asdf/asdf.fish
 end
 
+# mise
+if type -q mise
+    mise activate fish | source
+end
+
 # gem bin
 if type -q gem
     set -gx PATH (gem environment | grep -E "EXECUTABLE DIRECTORY" | cut -d ':' -f 2 | cut -d ' ' -f 2) $PATH
@@ -111,7 +116,6 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 
-# volta
 if type -q volta
     set -gx VOLTA_HOME "$HOME/.volta"
     set -gx PATH "$VOLTA_HOME/bin" $PATH
