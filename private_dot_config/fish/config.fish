@@ -100,6 +100,10 @@ if type -q starship
     starship init fish | source
 end
 
+if type -q task
+    task --completion fish | source
+end
+
 # zellij
 if type -q zellij
     status --is-interactive; and eval (zellij setup --generate-auto-start fish | string collect)
