@@ -185,3 +185,7 @@ id_ed25519*
 
 # Terraform
 .terraform/
+
+**/.claude/settings.local.json
+
+**/CLAUDE.local.md

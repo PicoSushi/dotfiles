@@ -4,6 +4,9 @@
 
 [core]
     pager = delta --dark
+    # Use `git update-index --test-untracked-cache` to enable / disable check
+    untrackedCache = true
+    fsmonitor = true
 
 
 [include]

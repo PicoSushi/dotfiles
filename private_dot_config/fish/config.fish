@@ -55,7 +55,7 @@ end
 set -gx PAGER less
 if type -q bat
     set -gx PAGER bat
-    set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
+    set -gx MANPAGER "bat -l man -p"
 end
 set -gx LESS --HILITE-UNREAD --ignore-case --jump-target=5 --LONG-PROMPT --no-init --RAW-CONTROL-CHARS
 
