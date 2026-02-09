@@ -1,0 +1,68 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# ユーザー名チェック
+{{ if ne .chezmoi.username "picosushi" -}}
+echo "This script is only for picosushi user."
+exit 0
+{{ end -}}
+
+# すでにインストールされているかチェック
+if command -v pokemon-colorscripts >/dev/null 2>&1; then
+    echo "pokemon-colorscripts is already installed. Skipping."
+    exit 0
+fi
+
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch")) -}}
+# Arch Linux: paru または yay でインストール
+if command -v paru >/dev/null 2>&1; then
+    paru -S --noconfirm pokemon-colorscripts-git
+    exit 0
+elif command -v yay >/dev/null 2>&1; then
+    yay -S --noconfirm pokemon-colorscripts-git
+    exit 0
+else
+    echo "Error: No AUR helper found. Please install paru or yay first."
+    exit 1
+fi
+{{ end -}}
+
+echo "Installing pokemon-colorscripts from source..."
+
+# 必要な依存関係をチェック
+for cmd in python3 git; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo "Error: $cmd is not installed. Please install it first."
+        exit 1
+    fi
+done
+
+# テンポラリディレクトリの作成と自動削除
+TEMP_DIR=$(mktemp -d)
+trap "rm -rf \"$TEMP_DIR\"" EXIT
+
+echo "Cloning repository..."
+git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git "$TEMP_DIR"
+cd "$TEMP_DIR"
+
+# Install to user's local directory
+echo "Installing to ~/.local/opt..."
+INSTALL_DIR="$HOME/.local/opt"
+BIN_DIR="$HOME/.local/bin"
+
+mkdir -p "$INSTALL_DIR/pokemon-colorscripts" || exit 1
+mkdir -p "$BIN_DIR" || exit 1
+
+# Copy files
+cp -rf colorscripts "$INSTALL_DIR/pokemon-colorscripts/" || exit 1
+cp pokemon-colorscripts.py "$INSTALL_DIR/pokemon-colorscripts/" || exit 1
+cp pokemon.json "$INSTALL_DIR/pokemon-colorscripts/" || exit 1
+
+# Create symlink
+rm -f "$BIN_DIR/pokemon-colorscripts"
+ln -s "$INSTALL_DIR/pokemon-colorscripts/pokemon-colorscripts.py" "$BIN_DIR/pokemon-colorscripts" || exit 1
+
+echo "pokemon-colorscripts installed to $INSTALL_DIR/pokemon-colorscripts"
+echo "Symlink created at $BIN_DIR/pokemon-colorscripts"
+echo "Make sure \$HOME/.local/bin is in your PATH"
