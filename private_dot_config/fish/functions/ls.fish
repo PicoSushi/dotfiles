@@ -1,3 +1,7 @@
 function ls --wraps=lsd --description 'alias ls lsd'
-  lsd $argv
+  if type -q lsd
+    lsd $argv
+  else
+    command ls $argv
+  end
 end
